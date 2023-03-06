@@ -1,0 +1,6 @@
+
+bundle
+bundle exec jekyll serve --watch
+
+bundle exec jekyll post "Title"
+
