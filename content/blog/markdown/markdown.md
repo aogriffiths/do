@@ -675,13 +675,30 @@ a
     
 a
 
-</div><div class="cell">
-
 </div></div>
 </div>
 
 
+
+<table class="table">
+<th class="row header"><td class="cell">Markdown</td><td class="cell">Result</td></th>
+
+<tr class="row"><td class="cell">
+    
+```
+b
+```
+
+</td><td class="cell">
+    
+b
+
+</td></tr>
+</table>
+
+
 <style>
+
 .table {
   display: table;
   width: 100%;
