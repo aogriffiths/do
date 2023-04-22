@@ -360,7 +360,7 @@ ls out/u-boot/
 	<entry>
 		<title></title>
 		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/"/>
-		<updated>2023-04-22T22:19:29Z</updated>
+		<updated>2023-04-22T22:36:27Z</updated>
 		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/</id>
 		<content type="html">&lt;p&gt;Coxles four
 https://www.youtube.com/watch?v=r7Qe3e2rb0U&lt;/p&gt;
@@ -571,7 +571,7 @@ ffplay -loop 0 out.gif
 	<entry>
 		<title></title>
 		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/qemu/"/>
-		<updated>2023-04-22T22:19:29Z</updated>
+		<updated>2023-04-22T22:36:27Z</updated>
 		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/qemu/</id>
 		<content type="html">&lt;ol&gt;
 &lt;li&gt;
