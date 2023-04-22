@@ -48,7 +48,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         qemu-user-static \
         sudo \
         swig \
-        u-boot-tools \ # add this line
+        u-boot-tools \ 
         udev \
         live-build \
     && rm -rf /var/lib/apt/lists/*
