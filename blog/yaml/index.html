@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>YAML Ain’t Markup Language</title>
+		<meta name="description" content="A cheat sheet, and style guide for yaml.">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.xml" type="application/atom+xml" title="Do">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.json" type="application/json" title="Do">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+* { box-sizing: border-box; }
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	list-style: none;
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}
+
+/* Direct Links / Markdown Headers */
+.header-anchor {
+	text-decoration: none;
+	font-style: normal;
+	font-size: 1em;
+	margin-left: .1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+	color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+	text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+	color: #aaa;
+}
+
+h2 + .header-anchor {
+	font-size: 1.5em;
+}</style>
+		<script>a=1</script>
+		
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/eleventy-base-blog/" class="home-link">Do</a>
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/eleventy-base-blog/">Home</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/about/">About Me</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1>YAML Ain’t Markup Language</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2023-01-30">30 January 2023</time></li>
+	<li><a href="/eleventy-base-blog/tags/guides/" class="post-tag">guides</a></li>
+</ul>
+
+<p>In fact, it's &quot;a data serialization language designed to be human-friendly and work well with modern programming languages for common everyday tasks&quot;. It is typically used for configuration files, data storage, and transmission.</p>
+<p>Data has three basic primitive types:</p>
+<ol>
+<li>Mappings (hashes/dictionaries)</li>
+<li>Sequences (arrays/lists)</li>
+<li>Scalars (strings/numbers/etc)</li>
+</ol>
+<p>And two styles of serialization, which can be used together:</p>
+<ol>
+<li>Block - uses newlines and indentation</li>
+<li>Flow - a more compact form</li>
+</ol>
+<h1 id="borrowed-concepts" tabindex="-1">Borrowed Concepts <a class="header-anchor" href="#borrowed-concepts">#</a></h1>
+<p>YAML borrows concepts from many places including:</p>
+<ul>
+<li><strong>Python:</strong> indentation to indicate nesting in the block style</li>
+<li><strong>JSON:</strong> like <code>{a:1, b:[1,2]}</code> in the flow style</li>
+<li><strong>Perl:</strong> data types (although these are common with many other programming languages)</li>
+<li><strong>Email:</strong> colon &quot;<code>:</code>&quot; for separating key-value pairs (RFC 822)</li>
+<li><strong>MIME:</strong> hyphens like &quot;<code>---</code>&quot; for separating documents in the same file or feed (RFC 2046)</li>
+<li><strong>C:</strong> backslash &quot;<code>\</code>&quot; escapes sequences</li>
+<li><strong>HTML/CSS:</strong> collapsing whitespace</li>
+</ul>
+<h1 id="basic-primitive-data-types" tabindex="-1">Basic primitive data types <a class="header-anchor" href="#basic-primitive-data-types">#</a></h1>
+<h2 id="mappings" tabindex="-1">Mappings <a class="header-anchor" href="#mappings">#</a></h2>
+<p>Python has a dictionaries, javascript has objects with properties, other languages might have hashmaps or associative arrays, but they all have one thing in common; they map keys to values. Yaml does this using mappings.</p>
+<p>The syntax is simply &quot;<code>key: value</code>&quot; but note the space after the colon.</p>
+<h3 id="examples" tabindex="-1">Examples <a class="header-anchor" href="#examples">#</a></h3>
+<p>Scalars to scalars:</p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">length</span><span class="token punctuation">:</span> <span class="token number">200</span><br><span class="token key atrule">width</span><span class="token punctuation">:</span> <span class="token number">100</span></code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,36" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,18)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,-6,25,-6"></path><path d="M0,0C12.5,0,12.5,6,25,6"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,-6)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">length: 200</text></g><g transform="translate(25,6)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">width: 100</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+<p>Most Json is also value yaml:</p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token punctuation">{</span><span class="token key atrule">length</span><span class="token punctuation">:</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token key atrule">width</span><span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">}</span></code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,36" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,18)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,-6,25,-6"></path><path d="M0,0C12.5,0,12.5,6,25,6"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,-6)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">length: 200</text></g><g transform="translate(25,6)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">width: 100</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+<h2 id="sequences" tabindex="-1">Sequences <a class="header-anchor" href="#sequences">#</a></h2>
+<p>Sequences in yaml are just ordered lists of items. Each item must be precented by &quot;<code>- </code>&quot; (note the space after the colon) and idented to the same level.</p>
+<h3 id="examples-1" tabindex="-1">Examples <a class="header-anchor" href="#examples-1">#</a></h3>
+<p>Array of scalars:</p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token punctuation">-</span> table<br><span class="token punctuation">-</span> chair</code></pre>
+</td><td markdown="1" style="" title="JSON">
+<pre class="language-json" tabindex="0"><code class="language-json"><span class="token punctuation">[</span><br> <span class="token string">"table"</span><span class="token punctuation">,</span><br> <span class="token string">"chair"</span><br><span class="token punctuation">]</span></code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,36" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,18)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,-6,25,-6"></path><path d="M0,0C12.5,0,12.5,6,25,6"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,-6)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">0: table</text></g><g transform="translate(25,6)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">1: chair</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+<p>Array of mappings:</p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> table<br>  <span class="token key atrule">place</span><span class="token punctuation">:</span> kitchen<br><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> chair<br>  <span class="token key atrule">place</span><span class="token punctuation">:</span> bedroom</code></pre>
+</td><td markdown="1" style="" title="JSON">
+<pre class="language-json" tabindex="0"><code class="language-json"><span class="token punctuation">[</span><br> <span class="token punctuation">{</span><br>  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"table"</span><span class="token punctuation">,</span><br>  <span class="token property">"place"</span><span class="token operator">:</span> <span class="token string">"kitchen"</span><br> <span class="token punctuation">}</span><span class="token punctuation">,</span><br> <span class="token punctuation">{</span><br>  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"chair"</span><span class="token punctuation">,</span><br>  <span class="token property">"place"</span><span class="token operator">:</span> <span class="token string">"bedroom"</span><br> <span class="token punctuation">}</span><br><span class="token punctuation">]</span></code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,72" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,36)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,-18,25,-18"></path><path d="M0,0C12.5,0,12.5,18,25,18"></path><path d="M25,-18C37.5,-18,37.5,-24,50,-24"></path><path d="M25,-18C37.5,-18,37.5,-12,50,-12"></path><path d="M25,18C37.5,18,37.5,12,50,12"></path><path d="M25,18C37.5,18,37.5,24,50,24"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,-18)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">0:</text></g><g transform="translate(25,18)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">1:</text></g><g transform="translate(50,-24)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">name: table</text></g><g transform="translate(50,-12)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">place: kitchen</text></g><g transform="translate(50,12)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">name: chair</text></g><g transform="translate(50,24)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">place: bedroom</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+<p><strong>cool</strong></p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">table</span><span class="token punctuation">:</span><br>    <span class="token key atrule">length</span><span class="token punctuation">:</span> <span class="token number">200</span><br>    <span class="token key atrule">width</span><span class="token punctuation">:</span> <span class="token number">100</span><br><span class="token punctuation">-</span> <span class="token key atrule">chair</span><span class="token punctuation">:</span><br>    <span class="token key atrule">length</span><span class="token punctuation">:</span> <span class="token number">50</span><br>    <span class="token key atrule">width</span><span class="token punctuation">:</span> <span class="token number">50</span></code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,72" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,36)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,-18,25,-18"></path><path d="M0,0C12.5,0,12.5,18,25,18"></path><path d="M25,-18C37.5,-18,37.5,-18,50,-18"></path><path d="M25,18C37.5,18,37.5,18,50,18"></path><path d="M50,-18C62.5,-18,62.5,-24,75,-24"></path><path d="M50,-18C62.5,-18,62.5,-12,75,-12"></path><path d="M50,18C62.5,18,62.5,12,75,12"></path><path d="M50,18C62.5,18,62.5,24,75,24"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,-18)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">0:</text></g><g transform="translate(25,18)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">1:</text></g><g transform="translate(50,-18)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">table:</text></g><g transform="translate(50,18)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">chair:</text></g><g transform="translate(75,-24)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">length: 200</text></g><g transform="translate(75,-12)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">width: 100</text></g><g transform="translate(75,12)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">length: 50</text></g><g transform="translate(75,24)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">width: 50</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+<p><strong>cool</strong></p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> table<br>  <span class="token key atrule">length</span><span class="token punctuation">:</span> <span class="token number">200</span><br>  <span class="token key atrule">width</span><span class="token punctuation">:</span> <span class="token number">100</span><br><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> chair<br>  <span class="token key atrule">length</span><span class="token punctuation">:</span> <span class="token number">50</span><br>  <span class="token key atrule">width</span><span class="token punctuation">:</span> <span class="token number">50</span></code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,96" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,48)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,-24,25,-24"></path><path d="M0,0C12.5,0,12.5,24,25,24"></path><path d="M25,-24C37.5,-24,37.5,-36,50,-36"></path><path d="M25,-24C37.5,-24,37.5,-24,50,-24"></path><path d="M25,-24C37.5,-24,37.5,-12,50,-12"></path><path d="M25,24C37.5,24,37.5,12,50,12"></path><path d="M25,24C37.5,24,37.5,24,50,24"></path><path d="M25,24C37.5,24,37.5,36,50,36"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,-24)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">0:</text></g><g transform="translate(25,24)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">1:</text></g><g transform="translate(50,-36)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">name: table</text></g><g transform="translate(50,-24)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">length: 200</text></g><g transform="translate(50,-12)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">width: 100</text></g><g transform="translate(50,12)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">name: chair</text></g><g transform="translate(50,24)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">length: 50</text></g><g transform="translate(50,36)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">width: 50</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+<p><strong>cool</strong></p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">table</span><span class="token punctuation">:</span><br> <span class="token key atrule">length</span><span class="token punctuation">:</span> <span class="token number">200</span><br> <span class="token key atrule">width</span><span class="token punctuation">:</span> <span class="token number">100</span><br><span class="token key atrule">chair</span><span class="token punctuation">:</span><br> <span class="token key atrule">length</span><span class="token punctuation">:</span> <span class="token number">50</span><br> <span class="token key atrule">width</span><span class="token punctuation">:</span> <span class="token number">50</span></code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,72" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,36)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,-18,25,-18"></path><path d="M0,0C12.5,0,12.5,18,25,18"></path><path d="M25,-18C37.5,-18,37.5,-24,50,-24"></path><path d="M25,-18C37.5,-18,37.5,-12,50,-12"></path><path d="M25,18C37.5,18,37.5,12,50,12"></path><path d="M25,18C37.5,18,37.5,24,50,24"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,-18)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">table:</text></g><g transform="translate(25,18)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">chair:</text></g><g transform="translate(50,-24)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">length: 200</text></g><g transform="translate(50,-12)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">width: 100</text></g><g transform="translate(50,12)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">length: 50</text></g><g transform="translate(50,24)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">width: 50</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+<p><strong>cool</strong></p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">table</span><span class="token punctuation">:</span><br>    <span class="token punctuation">-</span> living<br>    <span class="token punctuation">-</span> kitchen<br><span class="token key atrule">chair</span><span class="token punctuation">:</span><br>    <span class="token punctuation">-</span> living<br>    <span class="token punctuation">-</span> kitchen<br>    <span class="token punctuation">-</span> bedroom</code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,84" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,39)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,-21,25,-21"></path><path d="M0,0C12.5,0,12.5,21,25,21"></path><path d="M25,-21C37.5,-21,37.5,-27,50,-27"></path><path d="M25,-21C37.5,-21,37.5,-15,50,-15"></path><path d="M25,21C37.5,21,37.5,9,50,9"></path><path d="M25,21C37.5,21,37.5,21,50,21"></path><path d="M25,21C37.5,21,37.5,33,50,33"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,-21)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">table:</text></g><g transform="translate(25,21)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">chair:</text></g><g transform="translate(50,-27)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">0: living</text></g><g transform="translate(50,-15)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">1: kitchen</text></g><g transform="translate(50,9)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">0: living</text></g><g transform="translate(50,21)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">1: kitchen</text></g><g transform="translate(50,33)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">2: bedroom</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+<p><strong>cool</strong></p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">table</span><span class="token punctuation">:</span><br>    <span class="token punctuation">-</span> <span class="token important">&amp;LR</span> living<br>    <span class="token punctuation">-</span> <span class="token important">&amp;KI</span> kitchen<br><span class="token key atrule">chair</span><span class="token punctuation">:</span><br>    <span class="token punctuation">-</span> <span class="token important">*LR</span><br>    <span class="token punctuation">-</span> <span class="token important">*KI</span><br>    <span class="token punctuation">-</span> bedroom</code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,84" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,39)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,-21,25,-21"></path><path d="M0,0C12.5,0,12.5,21,25,21"></path><path d="M25,-21C37.5,-21,37.5,-27,50,-27"></path><path d="M25,-21C37.5,-21,37.5,-15,50,-15"></path><path d="M25,21C37.5,21,37.5,9,50,9"></path><path d="M25,21C37.5,21,37.5,21,50,21"></path><path d="M25,21C37.5,21,37.5,33,50,33"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,-21)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">table:</text></g><g transform="translate(25,21)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">chair:</text></g><g transform="translate(50,-27)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">0: living</text></g><g transform="translate(50,-15)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">1: kitchen</text></g><g transform="translate(50,9)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">0: living</text></g><g transform="translate(50,21)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">1: kitchen</text></g><g transform="translate(50,33)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">2: bedroom</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+<p><strong>cool</strong></p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml">X<br>  <span class="token punctuation">-</span> <span class="token key atrule">Y</span><span class="token punctuation">:</span> hello</code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p>formatter failed with message: YAMLParseError: Implicit keys need to be on a single line at line 2, column 1:</p>
+<p>X
+^</p>
+</td>
+</tr>
+</table>
+<p><strong>cool</strong></p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">X</span><span class="token punctuation">:</span><br><span class="token punctuation">-</span> <span class="token key atrule">Y</span><span class="token punctuation">:</span> hello</code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,24" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,12)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,0,25,0"></path><path d="M25,0C37.5,0,37.5,0,50,0"></path><path d="M50,0C62.5,0,62.5,0,75,0"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">X:</text></g><g transform="translate(50,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">0:</text></g><g transform="translate(75,0)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">Y: hello</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+<p><strong>cool</strong></p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">X</span><span class="token punctuation">:</span><br>  <span class="token punctuation">-</span> <span class="token key atrule">Y</span><span class="token punctuation">:</span> hello</code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,24" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,12)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,0,25,0"></path><path d="M25,0C37.5,0,37.5,0,50,0"></path><path d="M50,0C62.5,0,62.5,0,75,0"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">X:</text></g><g transform="translate(50,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">0:</text></g><g transform="translate(75,0)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">Y: hello</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+<p><strong>cool</strong></p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">X</span><span class="token punctuation">:</span><br><span class="token key atrule">Y</span><span class="token punctuation">:</span> hello</code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,36" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,18)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,-6,25,-6"></path><path d="M0,0C12.5,0,12.5,6,25,6"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,-6)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">X: null</text></g><g transform="translate(25,6)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">Y: hello</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+<p><strong>cool</strong></p>
+<table class="responsive">
+<tr>
+<td markdown="1" style="" title="YAML">
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">X</span><span class="token punctuation">:</span><br> <span class="token key atrule">Y</span><span class="token punctuation">:</span> hello</code></pre>
+</td><td markdown="1" style="" title="Graph">
+<p><svg viewBox="0,0,150,24" width="150" style="background-color: ghostwhite;"><g font-family="sans-serif" font-size="10" transform="translate(5,12)"><g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5"><path d="M0,0C12.5,0,12.5,0,25,0"></path><path d="M25,0C37.5,0,37.5,0,50,0"></path></g><g stroke-linejoin="round" stroke-width="3"><g transform="translate(0,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end"></text></g><g transform="translate(25,0)"><circle fill="#555" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="-4" text-anchor="end">X:</text></g><g transform="translate(50,0)"><circle fill="#999" r="2.5"></circle><text stroke="white" paint-order="stroke" dy="0.16em" x="4" text-anchor="start">Y: hello</text></g></g></g></svg></p>
+</td>
+</tr>
+</table>
+
+<style>
+/* If you are seeing this your markdown render does not support custom styles. Sorry. */
+
+table.responsive {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed ;
+}
+
+table.responsive th {  
+  width: 1%;
+  font-weight: bold;
+  text-align: left;
+}
+
+
+table.responsive td {
+  padding: 10px;
+  border: 0px solid black;
+  width: 10%;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+   tr.header + tr {
+      border-top: 1px solid DimGray;
+   }
+   tr:not(.header) {
+      border-bottom: 1px solid DimGray;
+   }
+   tr.header {
+      border-bottom: 1px solid LightGray;
+   }
+}
+
+@media screen and (prefers-color-scheme: light) {
+   tr.header + tr {
+      border-top: 1px solid LightGray;
+   }
+   tr:not(.header) {
+      border-bottom: 1px solid LightGray;
+   }
+   tr.header {
+      border-bottom: 1px solid DimGray;
+   }
+}
+
+
+@media screen and (max-width: 767px) {
+  table.responsive {
+    display: block;
+  }
+  table.responsive tr.header {
+    display: none;
+  }
+  table.responsive tr {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  table.responsive td {
+    flex-basis: 100%;
+    padding: 5px;
+  }
+  td::before {
+    content: attr(title);
+    font-size: 8pt;
+    font-variant-caps: all-small-caps;
+    color: LightGray;
+  }
+}
+</style>
+
+<ul class="links-nextprev"><li>Previous: <a href="/eleventy-base-blog/blog/markdown/">Opinionated Markdown Guide</a></li><li>Next: <a href="/eleventy-base-blog/blog/mysticrose/">Mystic Rose</a></li>
+</ul>
+
+		</main>
+
+		<footer></footer>
+
+		<!-- Current page: /eleventy-base-blog/blog/yaml/ -->
+	</body>
+</html>

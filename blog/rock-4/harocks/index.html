@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Home Assistant Rocks!</title>
+		<meta name="description" content="Home Assistant and the Rocks Pi, together">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.xml" type="application/atom+xml" title="Do">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.json" type="application/json" title="Do">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+* { box-sizing: border-box; }
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	list-style: none;
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}
+
+/* Direct Links / Markdown Headers */
+.header-anchor {
+	text-decoration: none;
+	font-style: normal;
+	font-size: 1em;
+	margin-left: .1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+	color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+	text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+	color: #aaa;
+}
+
+h2 + .header-anchor {
+	font-size: 1.5em;
+}</style>
+		<script>a=1</script>
+		
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/eleventy-base-blog/" class="home-link">Do</a>
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/eleventy-base-blog/">Home</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/about/">About Me</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1>Home Assistant Rocks!</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2023-03-25">25 March 2023</time></li>
+	<li><a href="/eleventy-base-blog/tags/rock/" class="post-tag">rock</a></li>
+</ul>
+
+<p>Home Assistant is a fantastic way to bring all your smart devices together in to one smart home. With very little effort you get a slick UI, companion app, remote access (courtesy of Nubu Casa), user configurable automations and much more. But it’s not limited to just that.</p>
+<p>This article will show you how to do a few things beyond the basics, like</p>
+<ul>
+<li>Bespoke Sensors - creating them using esphome</li>
+<li>Outdoors - measuring (and withstanding) the elements.</li>
+<li>Long wires - hard wiring to places wifi and power won’t reach.</li>
+<li>Public APIs - getting data from a source which Home Assistant doesn’t support (yet)</li>
+<li>Rock Pi - A raspberry Pi alternative with good  a cost / performance balance</li>
+<li>Indoor display - attaching a screen directly to home assistant to share a dashboard</li>
+<li>Outdoor display - use RGB leds to create outdoor indicators or digital signage</li>
+</ul>
+<p>It’s intended for makers, inventors, and anyone interested doing more than out of the box stuff. It’s a long article, including code, configuration, hardware assembly and more hands on soldering and making. You can read it all or just pick the bits of interest to you.</p>
+<p>The example its based on is monitoring weather conditions for a rowing club, however you could easily adapt it for many other other outdoor or indoor, sport or non-sport examples.</p>
+<p>I hope it’s useful!</p>
+<p>Part 1 - Home Assistant on a Rock PI</p>
+<p>Home assistant supports Raspberry PI as standard so why use anything else?</p>
+<p>just your home that can help with</p>
+<p>Requirements</p>
+<ul>
+<li>Measure air temperature.</li>
+<li>Measure water temperature.</li>
+<li>Get river flow rate from an online service.</li>
+<li>Show all three data points on a display.
+ 
+Assumptions</li>
+<li>There is a wall mounted box, which:
+<ul>
+<li>can house a sensor control device;</li>
+<li>is weather proof;</li>
+<li>has access to mains power, which a micro usb charger can be plugged in to;</li>
+<li>has access to wifi.</li>
+</ul>
+</li>
+<li>Air temperature will be measured at the box location or nearby.</li>
+<li>Water temperature will be measured in the river which:
+<ul>
+<li>is no more than 10m away from the sensor control device;</li>
+<li>is connect to by Cat5 cable run from the wall mounted box to the water</li>
+<li>has a secure route for the Cat5 cable which won’t cause a trip hazard or lead to it being damaged</li>
+<li>has a secure way to mount the water temperature sensor so it is underwater at all times</li>
+<li>River height won’t vary more than 1m
+ 
+Solution
+ 
+#1 Home Assistant + Display
+ 
+A single machine running Home Assistant (HA) and the display. Can be located anywhere in the club house with access to WiFi. In the future HA can collect data from other devices too, like cameras, alarms, and other IoT sensors, if you want. Attach a touch screen display directly to it to avoid the need for keyboard and mouse but run a very lightweight UI operating System - just needs a web browser to display home assistant. In order to run both a web browser and Home Assistant the “Home Assistant Container” installation method is needed (the alternative it to run two Rock Pis, one for HA and one for the display which would cost double).
+ 
+HA can easily gather the temperature sensor data from the ESP device (see below) and using the “scrape” integration can get the river flow rate data from any online webpage. If there is an online API for river flow rate it’s not too hard to write a custom HA integration to pull data from that, which should be more stable than we page scraping the data for obvious reasons.
+ 
+For the Home Assistant Setup</li>
+</ul>
+</li>
+<li>Rock PI 4C (Simon has one)</li>
+<li>Pi 7” touch screen display</li>
+<li>Pi 7” case</li>
+<li>24w usb power supply with quick charge support</li>
+<li>Keyboard and mouse for the initial setup</li>
+</ul>
+<p>For the sensors I’ve used:</p>
+<ul>
+<li>Wemos D1 Mini (cheap and small, could switch to one of the larger and most costly esp8266 boards OKdo sell)</li>
+<li></li>
+</ul>
+<ul>
+<li>
+<p>16x16 neopixel</p>
+</li>
+<li>
+<p>16x16 Neopixel Grid</p>
+</li>
+<li>
+<p>Micro USB power supply</p>
+</li>
+<li>
+<p>£10 – 2x RJ45 male and female connectors (to allow the temperature sensors to be easily connected / moved)</p>
+</li>
+<li>
+<p>£15 – UV and weather resistant Cat5 Cable (to connect the temperature sesnors)</p>
+</li>
+<li>
+<p>£2 – 2x DS18B20 temperatures sensors</p>
+</li>
+<li>
+<p>£8 – 2x temperature sensor probe casing</p>
+</li>
+<li>
+<p>£5 – 2x Sundry glue, PTFE tape, double layer heat shrink to create a water tight probes</p>
+</li>
+<li>
+<p>£10 – project enclosure (box to hold the D1 Mini, and cat 5 connectors)</p>
+</li>
+<li>
+<p>£10-£15 – optional 0.96” LCD display can be added to this device (allow people to read the temperature data, and potentially the river flow data, at the location of the sensor device. 0.96” LCD or OLED displays are cheap and easy to connect to ESP devices, anything larger is more expensive or impossible for the ESP to drive).</p>
+</li>
+<li>
+<p>£? Optional other sensors like air pressure and humidity, but that might be beyond the MVP…
+ 
+Total - £60-75</p>
+</li>
+<li>
+<p>4-6 hrs to build</p>
+</li>
+<li>
+<p>2-3 hrs to install
+ 
+Home Assitant OS dosn't yet support the Rock 4 and until it does we will need to set up a clean Debian OS manually.</p>
+</li>
+</ul>
+<h2 id="part-4-tbc" tabindex="-1">Part 4 - TBC <a class="header-anchor" href="#part-4-tbc">#</a></h2>
+<p>configuration.yaml:
+/usr/share/hassio/homeassistant</p>
+<p>RK3399-T</p>
+<p>Hoke assistant is now downloading the docker image layers you need. To follow it’s progress you can run:</p>
+<p>journalctl -f</p>
+<p>sudo ufw allow from 192.168.1.0/24 to any port 8123</p>
+<p>http://192.168.1.9:8123</p>
+<blockquote>
+<p>apt-get install libubootenv-tool</p>
+</blockquote>
+<p>https://wiki.radxa.com/Rockpi4/dev/serial-console</p>
+<p>In seriel console:</p>
+<blockquote>
+<p>setenv bootargs ${bootargs} systemd.unified_cgroup_hierarchy=false
+printenv  bootargs</p>
+</blockquote>
+<p>cat /proc/cmdline</p>
+<p>(//u-boot bootcmd_mmc1)</p>
+<p>consider for machine name mDNS</p>
+<pre><code>apt install avahi-daemon
+</code></pre>
+<h1 id="end" tabindex="-1">--------- END --------- <a class="header-anchor" href="#end">#</a></h1>
+<p>RDP</p>
+<ul>
+<li>? https://www.digitalocean.com/community/tutorials/how-to-enable-remote-desktop-protocol-using-xrdp-on-ubuntu-22-04</li>
+</ul>
+<p>label kernel-4.4.194-11-rk3399-rockchip-g1bb08d49cc40
+kernel /vmlinuz-4.4.194-11-rk3399-rockchip-g1bb08d49cc40
+initrd /initrd.img-4.4.194-11-rk3399-rockchip-g1bb08d49cc40
+devicetreedir /dtbs/4.4.194-11-rk3399-rockchip-g1bb08d49cc40
+append earlyprintk console=ttyFIQ0,1500000n8 rw init=/sbin/init rootfstype=ext4 rootwait  root=UUID=fa5b60b5-f645-4f68-8d47-b519dd856ea1 console=ttyS2,1500000n8 systemd.unified_cgroup_hierarchy=false apparmor=1 security=apparmor</p>
+<p>Boot procedure</p>
+<ol>
+<li>
+<p>Firmware - Arm trusted firmware initialises the board</p>
+</li>
+<li>
+<p>Bootloader - Hands over to the bootloadaer which is u-boot. Internally u-boot calls &quot;run bootcmd&quot; which runs a number of commands designed to find storage media attached to the board contining &quot;extlinux/extlinux.conf&quot;. IF it's found u-boot will handover to syslinux to use this configuation.</p>
+</li>
+</ol>
+<p>extlinux.conf</p>
+<p>syslinux</p>
+<p>Original</p>
+<pre><code>label kernel-4.4.194-11-rk3399-rockchip-g1bb08d49cc40
+    kernel /vmlinuz-4.4.194-11-rk3399-rockchip-g1bb08d49cc40
+    initrd /initrd.img-4.4.194-11-rk3399-rockchip-g1bb08d49cc40
+    devicetreedir /dtbs/4.4.194-11-rk3399-rockchip-g1bb08d49cc40
+    append earlyprintk console=ttyFIQ0,1500000n8 rw init=/sbin/init rootfstype=ext4 rootwait  root=UUID=fa5b60b5-f645-4f68-8d47-b519dd856ea1 console=ttyS2,1500000n8 
+</code></pre>
+<p>New</p>
+<pre><code>q
+</code></pre>
+<ol start="3">
+<li>Device tree</li>
+<li>Linux kernal Image</li>
+<li>Root Filesystem</li>
+</ol>
+
+<ul class="links-nextprev"><li>Previous: <a href="/eleventy-base-blog/blog/rock-4/ha_on_rock_4_se/">Home Assistant on Debian on Rock 4 SE</a></li><li>Next: <a href="/eleventy-base-blog/blog/rock-4/rock4se_build_2_deb_build/">Rock4 SE Debian Build</a></li>
+</ul>
+
+		</main>
+
+		<footer></footer>
+
+		<!-- Current page: /eleventy-base-blog/blog/rock-4/harocks/ -->
+	</body>
+</html>

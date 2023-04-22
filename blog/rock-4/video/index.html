@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Do</title>
+		<meta name="description" content="Writing about things I do">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.xml" type="application/atom+xml" title="Do">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.json" type="application/json" title="Do">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+* { box-sizing: border-box; }
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	list-style: none;
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}
+
+/* Direct Links / Markdown Headers */
+.header-anchor {
+	text-decoration: none;
+	font-style: normal;
+	font-size: 1em;
+	margin-left: .1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+	color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+	text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+	color: #aaa;
+}
+
+h2 + .header-anchor {
+	font-size: 1.5em;
+}</style>
+		<script>a=1</script>
+		
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/eleventy-base-blog/" class="home-link">Do</a>
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/eleventy-base-blog/">Home</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/about/">About Me</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1></h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2023-04-22">22 April 2023</time></li>
+</ul>
+
+<p>Coxles four
+https://www.youtube.com/watch?v=r7Qe3e2rb0U</p>
+<p>Options
+2:20-2:35 - from above
+2:46-2:50 - side close up
+3:12-3:17 - side close up moving
+3:36-3:40 - side / backgournd not ideal
+3:52-3:58 - side / fairly good background
+4:26-4:32 - above side on (stationary camera)
+5:05-5:08 - My final chocie
+5:20-5:24 - My original choice but image was too small and blurly in the end</p>
+<p>Download some of the rounding video e.g. 5:10-5:25</p>
+<pre><code>ffmpeg -y -i original.webm  -vf &quot;drawtext=text='%{n}. %{pts\:hms}':fontsize=32:fontcolor=white:box=1:boxborderw=6:boxcolor=black@0.75:x=(w-text_w)/2:y=h-text_h-20, drawgrid=w=iw/16:h=ih/12:t=1:c=white@0.5&quot; -g 1 -c:a copy  step1_timestamped.mp4
+ffplay  step1_timestamped.mp4
+</code></pre>
+<p>Open in the vlc media player and use the hotkeys:</p>
+<p>ffplay</p>
+<p>left arrow ...... 10 seconds backwards
+right arrow ..... 10 seconds forward
+up arrow ........  1 minute  backwards
+down arrow ......  1 minute  forwards
+page down ....... 10 minutes backwards
+page up ......... 10 minutes forward
+s ............... Step to the next frame</p>
+<p>Find the exact start and finish of the clip you want</p>
+<p>Start of stroke
+153. 00:00:08.446 &lt; read for catch
+154. 00:00:08.486
+155. 00:00:08.526 &lt; touches water
+156. 00:00:08.566</p>
+<p>End of stroke
+189. 00:00:09.886
+190. 00:00:09.926
+191. 00:00:09.966 &lt; touches water
+192. 00:00:10.006</p>
+<p>So we want 00:00:08.526 to 00:00:09.926, which is 00:00:08.566 for 00:00:01.4</p>
+<ol start="3">
+<li>STEP 3
+=========
+Next lets crop to the area of interest, the grid lines help here 11 horizontal, 7 vertical 3x3</li>
+</ol>
+<pre><code>VIDEOSS=00:00:08.526
+VIDEOT=00:00:01.44
+SHIFT=6
+ffmpeg -y -i original.webm -i original.webm  -ss $VIDEOSS -t $VIDEOT -filter_complex &quot;crop=iw*3/16:ih*3/12:iw*11/16:ih*7/12, [0:v]overlay=0:100+t*$SHIFT, drawgrid=w=iw/16:h=ih/12:t=1:c=white@0.5&quot; -c:a copy  test2.mp4
+ffplay -loop 0 test2.mp4
+</code></pre>
+<p>playing arround with that (luckly all I reall needed was to adjust the <code>7.4</code> in <code>t*7.4</code>)</p>
+<pre><code>ffmpeg -y -i original.webm -i original.webm  -ss $VIDEOSS -t $VIDEOT -filter_complex &quot;crop=iw*3/16:ih*3/12:iw*11/16:ih*7/12, [0:v]overlay=0:100+t*7.4, drawbox=x=30:y=185:w=50:h=50:c=red&quot; -c:a copy  test2.mp4
+ffplay -loop 0 test2.mp4
+</code></pre>
+<h1 id="4-step-4" tabindex="-1">4 STEP 4 <a class="header-anchor" href="#4-step-4">#</a></h1>
+<p>to crop it:</p>
+<pre><code>ffmpeg -y -i original.webm -i original.webm  -ss $VIDEOSS -t $VIDEOT -filter_complex &quot;crop=iw*3/16:ih*3/12:iw*11/16:ih*7/12, [0:v]overlay=0:100+t*$SHIFT, boxblur=1, histeq, crop=x=30:y=175:w=50:h=50, vignette=a=0.1&quot; -c:a copy  test2.mp4
+</code></pre>
+<ol start="5">
+<li>STEP 5
+=========
+to get a 16x16</li>
+</ol>
+<pre><code>ffmpeg -y -i original.webm -i original.webm  -ss $VIDEOSS -t $VIDEOT -filter_complex &quot;crop=iw*3/16:ih*3/12:iw*11/16:ih*7/12, [0:v]overlay=0:100+t*$SHIFT, histeq, crop=x=30:y=175:w=50:h=50, vignette=a=0.1, scale=16:16&quot; -c:a copy  out.gif
+</code></pre>
+<p>scale=320:240</p>
+<p>=============</p>
+<p>The example here is a video of Steve Redgrave's record-breaking fifth gold medal at the Sydney 2000 Olypics see <a href="https://www.youtube.com/watch?v=r7Qe3e2rb0U">here</a>. The second from 2:38 to 2:54 gives a reasonable quality close up without too much camera vibration or movement to contend with.</p>
+<h2 id="1-get-a-clip-from-the-original-footage" tabindex="-1">1. Get a clip from the original footage <a class="header-anchor" href="#1-get-a-clip-from-the-original-footage">#</a></h2>
+<p>Downloading the full video will take time, you can get a small part using <code>yt-dlp</code> and postprocessor arguments. Add a good margin arround the section of the clip you want to be sure to get a keyframe preceeding it.</p>
+<pre><code>VIDEOURL=https://www.youtube.com/watch?v=r7Qe3e2rb0U
+VIDEOSS=00:02:30.00
+VIDEOT=00:00:20.00
+
+yt-dlp --postprocessor-args &quot;-ss $VIDEOSS -t $VIDEOT&quot; $VIDEOURL --force-overwrites -o &quot;step1_original.%(ext)s&quot;
+</code></pre>
+<h2 id="2-inspect" tabindex="-1">2. Inspect <a class="header-anchor" href="#2-inspect">#</a></h2>
+<p>To inspect the clip, and choose the exact frames you need, create a copy with a grid and timestamps.</p>
+<pre><code>ffmpeg -i step1_original.webm -y -c:a copy -vf &quot;\
+drawtext=text='%{n}. %{pts\:hms}'\
+:fontsize=32:fontcolor=white\
+:box=1:boxborderw=6:boxcolor=black@0.75\
+:x=(w-text_w)/2:y=h-text_h-20, \
+drawgrid=w=100:h=100:t=1:c=white@0.5&quot; \
+step2_timestamped.mp4
+
+ffplay  step2_timestamped.mp4
+</code></pre>
+<ul>
+<li><code>-i</code> - input file</li>
+<li><code>-y</code> -  overwrite output without asking</li>
+<li><code>-c:a copy</code> - copy the audio</li>
+<li><code>-vf</code>   filter the video withthe follwing filtergraph:
+<ul>
+<li><code>drawtext</code> - add the frame number and timestamp to the output, with <code>fontsize fontcolor</code> for white 32pt, <code>box boxborderw boxcolor</code> for a 75% trasnparent box with 6px border, <code>x y</code> for tghe start position of the text (using <code>w</code>, <code>h</code>, <code>test_W</code> &amp; <code>:text h</code> parameters to center the text at the bottom)</li>
+<li><code>drawgrid</code> - add a 100x100, 1px thick, 50% trasnparent white grid.</li>
+</ul>
+</li>
+<li><code>step2_timestamped.mp4</code> the output</li>
+</ul>
+<p>Note: the frame numbers are based on <code>step1_original.webm</code> so to reference a frame it needs to be based on that as the imput file. For example to select a single frame:</p>
+<pre><code>FRAMENUMBER=214
+ffmpeg -i step1_original.webm -y -vframes 1 -vf &quot;\
+drawtext=text='%{n}. %{pts\:hms}'\
+:fontsize=32:fontcolor=white\
+:box=1:boxborderw=6:boxcolor=black@0.75\
+:x=(w-text_w)/2:y=h-text_h-20, \
+drawgrid=w=100:h=100:t=1:c=white@0.5, \
+select=eq(n\,$FRAMENUMBER)&quot; \
+step2_timestamped.png
+</code></pre>
+<p>Which uses the <code>-vframes 1</code> option and the <code>select=eq(n\,$FRAMENUMBER)</code> filter.</p>
+<p><a href="step2_timestamped.mp4"><img src="step2_timestamped.png" alt="step2_timestamped.mp4"></a></p>
+<p>To control the playback with ffplay use:</p>
+<pre><code>left arrow ...... 10 seconds backwardss
+right arrow ..... 10 seconds forward
+up arrow ........  1 minute  backwards
+down arrow ......  1 minute  forwards
+page down ....... 10 minutes backwards
+page up ......... 10 minutes forward
+s ............... Step to the next frame
+</code></pre>
+<p>You can see frame 138 to 175 inclusive creates a loop of 38 frames represeting 1.52s of time (the elapsed time between frames 137 and 175 is 10.606 - 9.086 = 1.52s).</p>
+<ul>
+<li><code>137. 00:00:09.086</code> Blades (oars) comming down, just above the water</li>
+<li><code>138. 00:00:09.126</code> Blades touch the water</li>
+<li><code>...</code></li>
+<li><code>175. 00:00:10.606</code> Blades just above the water</li>
+<li><code>176. 00:00:10.646</code> Blades touch the water</li>
+</ul>
+<blockquote>
+<p><em><strong>Side note:</strong></em> This maths shows a rate of 39.5 stokes per minute for the crew (60 / 1.52 = 39.5). However, the BBC commertary of the event quoted 36 - 38 stokes per miniute for the British at this part of the race. There could be several factors leading to the discrepancy but the crew was steadily increasing their rate at the time and it in all likelyhood they were one step ahead of the comentary.</p>
+</blockquote>
+<h2 id="3-trim-the-clip" tabindex="-1">3. Trim the clip <a class="header-anchor" href="#3-trim-the-clip">#</a></h2>
+<p>You may notice there is a lag in the video starting when playing <code>step2_timestamped.mp4</code>. This is becuase the playback requires a keyframe before the video can be rendered.</p>
+<p>So, 10 to 47</p>
+<pre><code>VIDEOSS=00:00:04.086
+VIDEOT=00:00:01.52
+W=9
+H=9
+X=12
+Y=3
+SX=-29
+SY=-7
+OLX=50
+OLY=50
+
+#x 1/4, y 3/4
+
+ffmpeg -y -i original.webm -i original.webm  -ss $VIDEOSS -t $VIDEOT -filter_complex &quot;\
+crop=x=ih*$X/16:y=ih*$Y/16:w=ih*$W/16:h=ih*$H/16, \
+[0:v]overlay=$OLX-$SX+t*$SX:$OLY-$SY+t*$SY, \
+drawgrid=w=ih/16:h=ih/16:t=1:c=white@0.5, \
+drawbox=x=60:y=100:w=416:h=416:c=red&quot; \
+-c:a copy  step3_section.mp4
+
+ffplay -loop 0 step3_section.mp4
+</code></pre>
+<h1 id="4-step-4-1" tabindex="-1">4 STEP 4 <a class="header-anchor" href="#4-step-4-1">#</a></h1>
+<p>to crop it, instead o drawing abox</p>
+<pre><code>ffmpeg -y -i original.webm -i original.webm  -ss $VIDEOSS -t $VIDEOT -filter_complex &quot;\
+crop=x=ih*$X/16:y=ih*$Y/16:w=ih*$W/16:h=ih*$H/16, \
+[0:v]overlay=$OLX-$SX+t*$SX:$OLY-$SY+t*$SY, \
+crop=x=60:y=100:w=416:h=416&quot; \
+-c:a copy  step4_crop.mp4
+
+ffplay -loop 0 step4_crop.mp4
+
+</code></pre>
+<h1 id="5-step-5" tabindex="-1">5 STEP 5 <a class="header-anchor" href="#5-step-5">#</a></h1>
+<p>scale down flags=lanczos
+16x16</p>
+<p>instead of drawing the grid
+boxblur=1, histeq, vignette=a=0.1, scale=16:16</p>
+<pre><code>ffmpeg -y -i original.webm -i palette.png -ss $VIDEOSS -t $VIDEOT -filter_complex &quot;\
+crop=x=ih*$X/16:y=ih*$Y/16:w=ih*$W/16:h=ih*$H/16, \
+[0:v]overlay=$OLX-$SX+t*$SX:$OLY-$SY+t*$SY, \
+histeq=0.1, vignette=0.1, tmix=frames=3:weights='1 1 1',
+crop=x=60:y=100:w=416:h=416,
+scale=16:16:flags=lanczos [x]; [x][1:v] paletteuse&quot; \
+-c:a copy  out.gif
+
+ffplay -loop 0 out.gif
+</code></pre>
+<p>WS2812 supports</p>
+<ul>
+<li>24bit - 8 bits per colour</li>
+</ul>
+<p>The esphome Animation suports</p>
+<ul>
+<li>
+<p>24bit - RGB24 - 8 bits per colour.</p>
+</li>
+<li>
+<p>16bit - RGB565 - 5 red, 6 green, 5 blue bits (human eye can percieve more shared of green)</p>
+</li>
+<li>
+<p>24bit 0xffffff = rrrr rrrr gggg gggg bbbb bbbb</p>
+</li>
+<li>
+<p>16bit 0x0fffff = rrrr rggg gggb bbbb</p>
+</li>
+</ul>
+<p>generate a pallet from the cropped video</p>
+<p>ffmpeg -i step4_crop.mp4 -vf &quot;histeq=0.1,palettegen=stats_mode=diff&quot; -y palette.png</p>
+<p>http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html</p>
+
+<ul class="links-nextprev"><li>Previous: <a href="/eleventy-base-blog/blog/qemu/"></a></li><li>Next: <a href="/eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/arm_build/">Rock4 SE custom OS, the old way + arm</a></li>
+</ul>
+
+		</main>
+
+		<footer></footer>
+
+		<!-- Current page: /eleventy-base-blog/blog/rock-4/video/ -->
+	</body>
+</html>

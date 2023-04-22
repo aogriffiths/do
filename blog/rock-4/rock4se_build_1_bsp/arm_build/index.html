@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Rock4 SE custom OS, the old way + arm</title>
+		<meta name="description" content="Building a custom kernal, u-boot and Debian from source for the Rock 4 SE, the old rockchip-bsp way and attempting to do it on arm without cross compiling">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.xml" type="application/atom+xml" title="Do">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.json" type="application/json" title="Do">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+* { box-sizing: border-box; }
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	list-style: none;
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}
+
+/* Direct Links / Markdown Headers */
+.header-anchor {
+	text-decoration: none;
+	font-style: normal;
+	font-size: 1em;
+	margin-left: .1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+	color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+	text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+	color: #aaa;
+}
+
+h2 + .header-anchor {
+	font-size: 1.5em;
+}</style>
+		<script>a=1</script>
+		
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/eleventy-base-blog/" class="home-link">Do</a>
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/eleventy-base-blog/">Home</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/about/">About Me</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1>Rock4 SE custom OS, the old way + arm</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2023-04-25">25 April 2023</time></li>
+	<li><a href="/eleventy-base-blog/tags/rock/" class="post-tag">rock</a></li>
+</ul>
+
+<p>THESE INSTRUCTIONS DO NOT WORK. They go a long way to working and are shared her ein case it's ever interesting to anyone.</p>
+<p>The official Rock 4 SE Debian 11 (Buster) image does not have AppArmor enabled, which Home Assistant requires. To create a custom image we will use the <a href="https://github.com/radxa/rockchip-bsp">Radxa Board Support Package</a> (BSP).</p>
+<p>Take the following steps on machine of your choice, they should be  adaptable to work on a Windows, Mac or Linux machine, but have only been tested on an intel Mac.</p>
+<h2 id="steps" tabindex="-1">Steps <a class="header-anchor" href="#steps">#</a></h2>
+<ol>
+<li>
+<p><strong>Install dependencies</strong></p>
+<p>Install the following on a raw machine (Tested on an Intel Mac, should be adaptable for Linux, not tested on Windows)</p>
+<ul>
+<li>
+<p><strong>Docker</strong>: See <a href="https://docs.docker.com/get-docker/">get-docker</a>.</p>
+</li>
+<li>
+<p><strong>Git</strong>: Follow suitable install instructions for your host OS (e.g. on a mac <code>brew install git</code>)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Clone the Radxa Board Support Package (BSP)</strong></p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token builtin class-name">cd</span> ./ <span class="token comment"># choose a working directory that suits you</span><br><span class="token function">git</span> clone <span class="token parameter variable">-b</span> master https://github.com/radxa/rockchip-bsp.git<br><span class="token builtin class-name">cd</span> rockchip-bsp</code></pre>
+</li>
+<li>
+<p><strong>Create a Docker container</strong></p>
+<p>A docker container will be used for building the board SD card image. You can create a docker image from the Dockerfile contained in the rockchip-bsp, but first you need to edit it to make some changes (if you are building on a arm machine) and fixes:</p>
+<ul>
+<li>
+<p>Open the docker file</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">open</span> ./docker/Dockerfile </code></pre>
+</li>
+<li>
+<p>Comment out all lines that contain <code>RUN echo &quot;deb http://mirrors.tuna...</code></p>
+</li>
+<li>
+<p>If you are using an arm machine (as oppose to x86) comment out the cross compiler packages:</p>
+<ul>
+<li>crossbuild-essential-arm64</li>
+<li>gcc-aarch64-linux-gnu</li>
+</ul>
+</li>
+<li>
+<p>add <code>u-boot-tools</code> (The kernel build later is dependent on mkimage from u-boot-tools, but unfortunately the Dockerfile provided doesn't include it.</p>
+</li>
+</ul>
+<p>You can then build and tag the image with</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">docker</span> build <span class="token parameter variable">-t</span> rockchip-radxa:1 <span class="token parameter variable">-f</span> ./docker/Dockerfile <span class="token builtin class-name">.</span>  <br><span class="token function">docker</span> tag rockchip-radxa:1 rockchip-radxa:latest</code></pre>
+</li>
+<li>
+<p>Start a container</p>
+<p>Now start a Containe rusing this image. The BSP documentation suggests bind mounting the source code (which you cloned in step 1) into the container (e.g. <code>docker run --privileged -it -v /home/jack/rockchip-bsp:/root ...</code>). However this can run in to issues with differing operating systems (e.g. file name case sensitivity) so it's safer to create new a volume for the source code:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">docker</span> volume create rockchip-bsp</code></pre>
+<p>Then, start the docker container with:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">--rm</span> <span class="token parameter variable">-v</span> <span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">pwd</span><span class="token variable">`</span></span>:/root/host <span class="token parameter variable">--mount</span> <span class="token assign-left variable">source</span><span class="token operator">=</span>rockchip-bsp,target<span class="token operator">=</span>/root/rockchip-bsp rockchip-radxa /bin/bash</code></pre>
+<p>The options here are:</p>
+<ul>
+<li>
+<p><code>run</code> and <code>/bin/bash</code> start the container with a bash shell</p>
+</li>
+<li>
+<p><code>-it</code> make is an interactive terminal</p>
+</li>
+<li>
+<p><code>-v ...</code> maps the current working director of the host machine to the container, so you can copy files out</p>
+</li>
+<li>
+<p><code>--mount ...</code> maps the docker volume create earlier to the container, to keep the source code, and complied out in</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Update the BSP submodules</strong></p>
+<p>Now you have shell in the docker container, clone the BSP in the <code>/root/rockchip-bsp</code> directory (which is where the volume created earlier is mounted) and checkout the submodules with:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token builtin class-name">cd</span> /root/rockchip-bsp<br><span class="token function">git</span> clone <span class="token parameter variable">-b</span> master https://github.com/radxa/rockchip-bsp.git ./<br><span class="token function">git</span> submodule init<br><span class="token function">git</span> submodule update </code></pre>
+<p>This may take some time; it's over 6Gb to download. (The linux kernel, led by Linus Torvalds, is one of the largest git repositories out there. Linus also led the development of git itself)</p>
+</li>
+<li>
+<p><strong>Configure the kernel</strong></p>
+<p>The kernel in the BSP is currently based on linux 4.19. The next step is where you can enable AppArmor, and make any other kernal configurations you like:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token builtin class-name">cd</span> kernel<br><span class="token function">make</span> rockchip_linux_defconfig<br><span class="token function">make</span> menuconfig</code></pre>
+<p>Use the menu to goto:</p>
+<ol>
+<li>Security options (space)</li>
+<li>Enable different security models (space)</li>
+<li>AppArmor support (space to select)</li>
+<li>Exit</li>
+<li>Exit</li>
+<li>Yes (to save)</li>
+</ol>
+<p>Then save the config:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">make</span> savedefconfig<br><span class="token function">cp</span> defconfig arch/arm64/configs/rockchip_linux_defconfig<br><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span></code></pre>
+</li>
+<li>
+<p>Compile the kernel</p>
+<p>If you are on a x86 machine you will need to cross compile, which is done by setting two environment variables.</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">ARCH</span><span class="token operator">=</span>arm64<br><span class="token builtin class-name">export</span> <span class="token assign-left variable">CROSS_COMPILE</span><span class="token operator">=</span>aarch64-linux-gnu-</code></pre>
+<p>Then compile with:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span><br>./build/mk-kernel.sh rk3399-rock-pi-4b  </code></pre>
+<p>The generated image and device tree blob (dtb) is copied to the <code>out/kernel</code> directory. To see them:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">ls</span> out/kernel/</code></pre>
+<p>To pack the kernel in deb packages run:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash">./build/pack-kernel.sh <span class="token parameter variable">-d</span> rockchip_linux_defconfig <span class="token parameter variable">-r</span> <span class="token number">1</span> </code></pre>
+<p>The generated packages will be copied to <code>out/packages</code> directory:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">ls</span> out/packages/</code></pre>
+<p>The copy them all excdpt the <code>dbg</code> and <code>libc</code> packages:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token punctuation">(</span>GLOBIGNORE<span class="token operator">=</span><span class="token string">"*dbg*:*libc*"</span><span class="token punctuation">;</span> <span class="token function">cp</span> out/packages/*.deb /root/host<span class="token punctuation">)</span></code></pre>
+</li>
+<li>
+<p><strong>Build u-boot</strong></p>
+<p>For ROCK Pi 4 Model B or ROCK 4 SE use <code>rk3399-rock-pi-4b</code>. (The README is out of date on this step it suggests using <code>rockpi4b</code>, but you can see the correct board names to use in the <code>build/board_configs.sh</code> file.)</p>
+<p>Run:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash">./build/mk-uboot.sh rk3399-rock-pi-4b  </code></pre>
+<p>if you get the error <code>qemu-x86_64: Could not open '/lib64/ld-linux-x86-64.so.2': No such file or directory</code></p>
+<p>comment out <code>export CROSS_COMPILE</code> in:</p>
+<ol>
+<li>top of <code>build/board_configs.sh</code></li>
+<li>top of  <code>build/mk-uboot.sh</code></li>
+<li><code>rk3399-rock-pi-4b</code> section of <code>build/mk-uboot.sh</code></li>
+</ol>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">find</span> ./ <span class="token parameter variable">-type</span> f <span class="token parameter variable">-name</span> <span class="token string">'*.sh'</span> <span class="token parameter variable">-exec</span> <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'s,export CROSS,\#export CROSS,gI'</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span></code></pre>
+<p>``
+git clone x
+cd x
+sudo apt-get install libsdl1.2-dev
+sudo apt-get install python3-setuptools
+make tools-only_defconfig</p>
+<pre><code>
+The generated images are copied to the `out/u-boot` directory. To see them:
+```bash
+ls out/u-boot/
+</code></pre>
+</li>
+<li>
+<p><strong>Make a Debian rootfs image</strong></p>
+<p>The scripts in <code>rootfs</code> create a debian system using <code>lb</code> (from live-build, the Debian Live tool suite). They are packaged in the BSP with all the correct configuration except one thing, they are configured to use a chinese mirror which is great if you live in China, and slow if you do not, so slow in fact yur build might timeout. Use <code>sed</code> to replace the mirrors:</p>
+<p><strong>First, the Debian Security Mirror</strong></p>
+<ul>
+<li>from: <code>https://mirrors.tuna.tsinghua.edu.cn/debian-security</code></li>
+<li>to: <code>https://security.debian.org/debian-security</code></li>
+</ul>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">find</span> ./ <span class="token parameter variable">-type</span> f <span class="token parameter variable">-name</span> configure <span class="token parameter variable">-exec</span> <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'s,https://mirrors.tuna.tsinghua.edu.cn/debian-security,https://security.debian.org/debian-security,gI'</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span></code></pre>
+<p><strong>Second, the Debian Mirror</strong></p>
+<ul>
+<li>from: <code>https://mirrors.tuna.tsinghua.edu.cn/debian</code></li>
+<li>to: <code>http://ftp.uk.debian.org/debian</code></li>
+</ul>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">find</span> ./ <span class="token parameter variable">-type</span> f <span class="token parameter variable">-name</span> configure <span class="token parameter variable">-exec</span> <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'s,https://mirrors.tuna.tsinghua.edu.cn/debian,http://ftp.uk.debian.org/debian,gI'</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span></code></pre>
+<p>Then run the following:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token builtin class-name">cd</span> ./rootfs<br><br><span class="token comment"># ignore the missing dependencies in the next step</span><br>dpkg <span class="token parameter variable">-i</span> ubuntu-build-service/packages/*  <br><br><span class="token comment"># The next step fixes the dependencies</span><br><span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-f</span>                       <br><br><span class="token builtin class-name">export</span> <span class="token assign-left variable">RELEASE</span><span class="token operator">=</span>buster <br><span class="token builtin class-name">export</span> <span class="token assign-left variable">TARGET</span><span class="token operator">=</span>desktop <br><span class="token builtin class-name">export</span> <span class="token assign-left variable">ARCH</span><span class="token operator">=</span>arm64<br><br>./mk-base-debian.sh<br>./mk-rootfs-buster.sh<br>./mk-image.sh<br></code></pre>
+<p>The environment variables are self explanatory (a Debian 11 / buster, desktop build for arm64). The scripts do the following:</p>
+<ul>
+<li>
+<p><code>mk-base-debian.sh</code> make a base Debian image (using live build)</p>
+</li>
+<li>
+<p><code>mk-rootfs-buster.sh</code> unpacks the image and merges it with packages and custom firmware for the Rock 4</p>
+</li>
+<li>
+<p><code>mk-image.sh</code> packages it all up again in an ext4 formatted image named <code>linaro-rootfs.img</code>.</p>
+</li>
+</ul>
+<p>To see the output and return to the top level BSP directory.</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">ls</span><br><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span></code></pre>
+</li>
+<li>
+<p><strong>Create a single image</strong></p>
+<p>Combine the separate u-boot, linux kernel, and debian rootfs images into a single image with a GPT partition table:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash">build/mk-image.sh <span class="token parameter variable">-c</span> rk3399 <span class="token parameter variable">-b</span> rockpi4 <span class="token parameter variable">-t</span> system <span class="token parameter variable">-r</span> rootfs/linaro-rootfs.img</code></pre>
+<p>The result is:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash">out/system.img</code></pre>
+<p>To copy this to your host computer run:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">cp</span> out/system.img /root/host/</code></pre>
+</li>
+<li>
+<p><strong>Flash the SD card</strong></p>
+<p>The final step is to flash <code>system.img</code> to an SD card. Balena Etcher is a good choice for this.</p>
+</li>
+</ol>
+<h2 id="references" tabindex="-1">References <a class="header-anchor" href="#references">#</a></h2>
+<ul>
+<li>https://wiki.radxa.com/Rock3/dev/Debian</li>
+<li>https://wiki.radxa.com/Rockpi4/dev/Debian</li>
+<li>https://github.com/radxa/rockchip-bsp</li>
+</ul>
+
+<ul class="links-nextprev"><li>Previous: <a href="/eleventy-base-blog/blog/rock-4/video/"></a></li><li>Next: <a href="/eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/">Rock4 SE custom OS, the old way</a></li>
+</ul>
+
+		</main>
+
+		<footer></footer>
+
+		<!-- Current page: /eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/arm_build/ -->
+	</body>
+</html>

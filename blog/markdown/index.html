@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Opinionated Markdown Guide</title>
+		<meta name="description" content="A cheat sheet, collection of hacks and style guide for markdown.">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.xml" type="application/atom+xml" title="Do">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.json" type="application/json" title="Do">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+* { box-sizing: border-box; }
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	list-style: none;
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}
+
+/* Direct Links / Markdown Headers */
+.header-anchor {
+	text-decoration: none;
+	font-style: normal;
+	font-size: 1em;
+	margin-left: .1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+	color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+	text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+	color: #aaa;
+}
+
+h2 + .header-anchor {
+	font-size: 1.5em;
+}</style>
+		<script>a=1</script>
+		
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/eleventy-base-blog/" class="home-link">Do</a>
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/eleventy-base-blog/">Home</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/about/">About Me</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1>Opinionated Markdown Guide</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2023-01-30">30 January 2023</time></li>
+	<li><a href="/eleventy-base-blog/tags/guides/" class="post-tag">guides</a></li>
+</ul>
+
+<p>Markdown is simple, effective way to document your stuff. From README's and project docs to making a blog markdown can do the trick.</p>
+<p>Here's a cheat sheet, collection of hacks and style guide. It is intended to work with github (github formatted markdown) and jekyll (often used for github pages). although there is more than one way to do things with markdown, this guide doesn't get in to that, it offers one way. This makes it quick to follow, consistent an opinionated markdown guide (you can call it the OMG if you want).</p>
+<h2 id="headings" tabindex="-1">Headings <a class="header-anchor" href="#headings">#</a></h2>
+<div class="table">
+<div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token title important">**Title**<br><span class="token punctuation">=========</span></span></code></pre>
+</div><div class="cell">
+<h1 id="title" tabindex="-1"><strong>Title</strong> <a class="header-anchor" href="#title">#</a></h1>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token title important">Heading L1<br><span class="token punctuation">==========</span></span></code></pre>
+</div><div class="cell">
+<h1 id="heading-l1" tabindex="-1">Heading L1 <a class="header-anchor" href="#heading-l1">#</a></h1>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token title important">Heading L2<br><span class="token punctuation">----------</span></span></code></pre>
+</div><div class="cell">
+<h2 id="heading-l2" tabindex="-1">Heading L2 <a class="header-anchor" href="#heading-l2">#</a></h2>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token title important"><span class="token punctuation">###</span> Heading L3</span></code></pre>
+</div><div class="cell">
+<h3 id="heading-l3" tabindex="-1">Heading L3 <a class="header-anchor" href="#heading-l3">#</a></h3>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token title important"><span class="token punctuation">####</span> Heading L4</span></code></pre>
+</div><div class="cell">
+<h4 id="heading-l4" tabindex="-1">Heading L4 <a class="header-anchor" href="#heading-l4">#</a></h4>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#####</span> Heading L5</span></code></pre>
+</div><div class="cell">
+<h5>Heading L5</h5>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token title important"><span class="token punctuation">######</span> Heading L6</span></code></pre>
+</div><div class="cell">
+<h6>Heading L6</h6>
+</div></div>
+</div>
+<h3 id="notes" tabindex="-1">Notes <a class="header-anchor" href="#notes">#</a></h3>
+<ol>
+<li>Do not use the <code>Title</code> or <code>Heading 1</code> format anywhere.</li>
+<li>Use underlines <code>---</code> for and L2 and <code>###</code> for L3 to L6. Make the underlines the same length as the heading.</li>
+<li>Alwsy place a space after <code>#</code>.</li>
+<li>Always have a blank line before and after above a heading.</li>
+</ol>
+<blockquote>
+<p>⚠️ <strong>Warning:</strong>  <code>===</code> with jekyll minima results in a <code>h1</code> that is smaller than a <code>h2</code>. See <a href="https://github.com/jekyll/minima/issues/113">here</a>.</p>
+</blockquote>
+<blockquote>
+<p>ℹ️ <strong>Info:</strong> If you never plan to use jekyll you could adopt:</p>
+<ol>
+<li>
+<p>Use underlines <code>===</code> and <code>---</code> for heading L1 and L2 and <code>###</code> for L3 to L6. Make the underlines the same length as the heading.</p>
+</li>
+<li>
+<p>If you want an overall title for the document, bold the first heading. (But you might not need this if you have <code>title:</code> in a front matter block)</p>
+</li>
+<li>
+<p>In a long markdown file don't use L1 just once, use it as many times a you need to split the content in to sections.</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="paragraph-text" tabindex="-1">Paragraph Text <a class="header-anchor" href="#paragraph-text">#</a></h2>
+<div class="table">
+<div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown">Use single spaces, <br>and single newlines<br>to create a single paragraph.</code></pre>
+</div><div class="cell">
+<p>Use single spaces,
+and single newlines
+to create a single paragraph.</p>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown">Use a double newline to start...<br><br>A new paragraph.</code></pre>
+</div><div class="cell">
+<p>Use a double newline to start...</p>
+<p>A new paragraph.</p>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown">Double trailing  <br>space at the end  <br>of lines for  <br>line breaks<br></code></pre>
+</div><div class="cell">
+<p>Double trailing<br>
+space at the end<br>
+of lines for<br>
+line breaks</p>
+</div></div>
+</div>
+<h2 id="lists" tabindex="-1">Lists <a class="header-anchor" href="#lists">#</a></h2>
+<div class="table">
+<div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
+<div class="row"><div class="cell"> 
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token list punctuation">-</span> Bulleted <br><span class="token list punctuation">-</span> List </code></pre>
+</div><div class="cell">
+<ul>
+<li>Bulleted</li>
+<li>List</li>
+</ul>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token list punctuation">1.</span> Ordered<br><span class="token list punctuation">2.</span> List </code></pre>
+</div><div class="cell">
+<ol>
+<li>Ordered</li>
+<li>List</li>
+</ol>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token list punctuation">-</span> Parent<br>     <span class="token list punctuation">-</span> child (indented by 4)</code></pre>
+</div><div class="cell">
+<ul>
+<li>Parent
+<ul>
+<li>child (indented by 4)</li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token list punctuation">1.</span> First<br>     <span class="token list punctuation">-</span> with child<br>     <span class="token list punctuation">-</span> 1970\. escaped number + dot<br><br><span class="token list punctuation">2.</span> With<br>   <br>   paragraph<br><br><span class="token list punctuation">3.</span> With<br>   ```javascript<br>   console.log('fenced code block');<br>   ```</code></pre>
+</div><div class="cell">
+<ol>
+<li>
+<p>First</p>
+<ul>
+<li>with child</li>
+<li>1970. escaped number + dot</li>
+</ul>
+</li>
+<li>
+<p>With</p>
+<p>paragraph</p>
+</li>
+<li>
+<p>With</p>
+<pre class="language-javascript" tabindex="0"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fenced code block'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+</li>
+</ol>
+</div></div>
+</div>
+<h3 id="notes-1" tabindex="-1">Notes <a class="header-anchor" href="#notes-1">#</a></h3>
+<ol>
+<li>
+<p>Bullet using <code>-</code></p>
+</li>
+<li>
+<p>Number using <code>0.</code></p>
+</li>
+<li>
+<p>Indent sublists with four spaces</p>
+</li>
+<li>
+<p>Indent any other contnet with 2 spaces</p>
+</li>
+</ol>
+<h2 id="formatting" tabindex="-1">Formatting <a class="header-anchor" href="#formatting">#</a></h2>
+<div class="table">
+<div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
+<div class="row"><div class="cell">
+<p><code>**bold**</code></p>
+</div><div class="cell">
+<p><strong>bold</strong></p>
+</div></div>
+<div class="row"><div class="cell">
+<p><code>***italic***</code></p>
+</div><div class="cell">
+<p><em><strong>italic</strong></em></p>
+</div></div>
+<div class="row"><div class="cell">
+<p><code>***bold italic***</code></p>
+</div><div class="cell">
+<p><em><strong>bold italic</strong></em></p>
+</div></div>
+<div class="row"><div class="cell">
+<p><code>**bold _italic_ inside**</code></p>
+</div><div class="cell">
+<p><strong>bold <em>italic</em> inside</strong></p>
+</div></div>
+<div class="row"><div class="cell">
+<p><code>~~strikethrough~~</code></p>
+</div><div class="cell">
+<p><s>strikethrough</s></p>
+</div></div>
+<div class="row"><div class="cell">
+<p><code>Sub&lt;sub&gt;script&lt;/sub&gt;</code></p>
+</div><div class="cell">
+<p>Sub<sub>script</sub></p>
+</div></div>
+<div class="row"><div class="cell">
+<p><code>Super&lt;sup&gt;script&lt;/sup&gt;</code></p>
+</div><div class="cell">
+<p>Super<sup>script</sup></p>
+</div></div>
+</div>
+<h2 id="links-and-images" tabindex="-1">Links and Images <a class="header-anchor" href="#links-and-images">#</a></h2>
+<p><a href="/eleventy-base-blog/url">A link</a>
+<img src="icon.png" alt="An Image">
+<a href="/eleventy-base-blog/url"><img src="/eleventy-base-blog/url" alt="A linked image"></a></p>
+<h2 id="code" tabindex="-1">Code <a class="header-anchor" href="#code">#</a></h2>
+<div class="table">
+<div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token code-snippet code keyword">`inline`</span> </code></pre>
+</div><div>
+<p><code>inline</code></p>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token code-snippet code keyword">`` `inline escaped` ``</span></code></pre>
+</div><div>
+<p><code>`inline escaped`</code></p>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token code"><span class="token punctuation">```</span><span class="token code-language">sh</span><br><span class="token code-block language-sh"># fenced</span><br><span class="token punctuation">```</span></span></code></pre>
+</div><div>
+<pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token comment"># fenced</span></code></pre>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token code"><span class="token punctuation">```</span><span class="token code-language">`markdown</span><br><span class="token code-block language-markdown">```sh<br><span class="token title important"><span class="token punctuation">#</span> fenced escaped</span></span><br><span class="token punctuation">```</span></span><br>````</code></pre>
+</div><div>
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token code"><span class="token punctuation">```</span><span class="token code-language">sh</span><br><span class="token code-block language-sh"><span class="token comment"># fenced escaped</span></span><br><span class="token punctuation">```</span></span></code></pre>
+</div></div>
+</div>
+<h2 id="tables" tabindex="-1">Tables <a class="header-anchor" href="#tables">#</a></h2>
+<div class="table">
+<div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token table"><span class="token table-header-row"><span class="token punctuation">|</span><span class="token table-header important">       </span><span class="token punctuation">|</span><span class="token table-header important">100%  </span><span class="token punctuation">|</span><span class="token table-header important">Markdown</span><span class="token punctuation">|</span><span class="token table-header important">Table  </span><span class="token punctuation">|</span><br></span><span class="token table-line"><span class="token punctuation">|</span><span class="token punctuation">-------</span><span class="token punctuation">|</span><span class="token punctuation">:-----</span><span class="token punctuation">|</span><span class="token punctuation">:------:</span><span class="token punctuation">|</span><span class="token punctuation">------:</span><span class="token punctuation">|</span><br></span><span class="token table-data-rows"><span class="token punctuation">|</span><span class="token table-data">Row1   </span><span class="token punctuation">|</span><span class="token table-data">Left  </span><span class="token punctuation">|</span><span class="token table-data">Center  </span><span class="token punctuation">|</span><span class="token table-data">Right  </span><span class="token punctuation">|</span><br><span class="token punctuation">|</span><span class="token table-data">Row2   </span><span class="token punctuation">|</span><span class="token table-data">A     </span><span class="token punctuation">|</span><span class="token table-data">B       </span><span class="token punctuation">|</span><span class="token table-data">C      </span><span class="token punctuation">|</span></span></span></code></pre>
+</div><div class="cell">
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:left">100%</th>
+<th style="text-align:center">Markdown</th>
+<th style="text-align:right">Table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Row1</td>
+<td style="text-align:left">Left</td>
+<td style="text-align:center">Center</td>
+<td style="text-align:right">Right</td>
+</tr>
+<tr>
+<td>Row2</td>
+<td style="text-align:left">A</td>
+<td style="text-align:center">B</td>
+<td style="text-align:right">C</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+<div class="row"><div class="cell">
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span> Multiline markdown <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span> in cells <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">markdown</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><br>One Table Row<br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span><br><br><span class="token list punctuation">-</span> Two <br><span class="token list punctuation">-</span> Lines<br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span></code></pre>
+</div><div class="cell">
+<table>
+<tr><th>  </th><th> Markdown in a table </th></tr>
+<tr><td markdown="1">
+<p>Row1</p>
+</td><td>
+<ul>
+<li>Two lines</li>
+<li>of markdown</li>
+</ul>
+</td></tr>
+</table>
+</div></div>
+</div>
+<h3 id="notes-2" tabindex="-1">Notes <a class="header-anchor" href="#notes-2">#</a></h3>
+<ol>
+<li>For markdown to span multiple lines inside a cell use a html <code>&lt;table&gt;</code> with both <code>&lt;td markdown=&quot;1&quot;&gt;</code> and blank lines as shown.</li>
+</ol>
+<blockquote>
+<p>ℹ️ <strong>Info:</strong> <code>&lt;td markdown=&quot;1&quot;&gt;</code> is required by jekyll flavoured markdown, the blank line is required by github flavoured markdown.</p>
+</blockquote>
+<h2 id="comments" tabindex="-1">Comments <a class="header-anchor" href="#comments">#</a></h2>
+<div class="table">
+<div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
+<div class="row"><div class="cell"> 
+<pre><code>A
+
+[nothing to see here]: # 
+
+C
+</code></pre>
+</div><div class="cell">
+<p>A</p>
+<p>C</p>
+</div></div>
+</div>
+<h2 id="blockquotes" tabindex="-1">Blockquotes <a class="header-anchor" href="#blockquotes">#</a></h2>
+<div class="table">
+<div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
+<div class="row"><div class="cell"> 
+<pre><code>&gt; qoute
+</code></pre>
+</div><div class="cell">
+<blockquote>
+<p>qoute</p>
+</blockquote>
+</div></div>
+<div class="row"><div class="cell">
+<pre><code>&gt; multiline
+&gt;
+&gt; quote
+</code></pre>
+</div><div class="cell">
+<blockquote>
+<p>multiline</p>
+<p>quote</p>
+</blockquote>
+</div></div>
+<div class="row"><div class="cell">
+<pre><code>&gt; quotes
+&gt;&gt; inside
+&gt;&gt;&gt; quotes
+</code></pre>
+</div><div class="cell">
+<blockquote>
+<p>quotes</p>
+<blockquote>
+<p>inside</p>
+<blockquote>
+<p>quotes</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</div></div>
+<div class="row"><div class="cell">
+<pre><code>&gt; Markdown
+&gt; --------
+&gt; - in a
+&gt; - ***quote***
+</code></pre>
+</div><div class="cell">
+<blockquote>
+<h2 id="markdown" tabindex="-1">Markdown <a class="header-anchor" href="#markdown">#</a></h2>
+<ul>
+<li>in a</li>
+<li><em><strong>quote</strong></em></li>
+</ul>
+</blockquote>
+</div></div>
+</div>
+<h2 id="alerts" tabindex="-1">Alerts <a class="header-anchor" href="#alerts">#</a></h2>
+<p>Achieved using blockquotes and emojis.</p>
+<div class="table">
+<div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
+<div class="row"><div class="cell"> 
+<pre><code>&gt; ℹ️ **Info:** just to let you know
+
+&gt; ⚠️ **Warning:** take care
+
+&gt; 🚩 **Error:** will fail
+
+&gt; 📝 **Note:** remember this
+
+&gt; 💡 **Tipx:** a useful trick
+</code></pre>
+</div><div class="cell">
+<blockquote>
+<p>ℹ️ <strong>Info:</strong> just to let you know</p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>Warning:</strong> take care</p>
+</blockquote>
+<blockquote>
+<p>🚩 <strong>Error:</strong> will fail</p>
+</blockquote>
+<blockquote>
+<p>📝 <strong>Note:</strong> remember this</p>
+</blockquote>
+<blockquote>
+<p>💡 <strong>Tipx:</strong> a useful trick</p>
+</blockquote>
+</div></div>
+</div>
+<blockquote>
+<p><strong>Note</strong>
+This is a note</p>
+</blockquote>
+<blockquote>
+<p><strong>Warning</strong>
+This is a warning</p>
+</blockquote>
+<div class="table">
+<div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
+<div class="row"><div class="cell">
+<pre><code>a
+</code></pre>
+</div><div class="cell">
+<p>a</p>
+</div></div>
+</div>
+<table class="table">
+<th class="row header"></th><td class="cell">Markdown</td><td class="cell">Result</td>
+<tr class="row"><td class="cell">
+<pre><code>b
+</code></pre>
+</td><td class="cell">
+<p>b</p>
+</td></tr>
+</table>
+<style>
+
+.table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.row {
+  display: table-row;
+}
+
+.header {
+  font-weight: bold;
+}
+.cell {
+  display: table-cell;
+  padding: 10px;
+  border: 0px solid black;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+   .row + .row {
+      border-top: 1px solid DimGray;
+   }
+   .header {
+      border-bottom: 1px solid LightGray;
+   }
+}
+
+@media screen and (prefers-color-scheme: light) {
+   .row + .row {
+      border-top: 1px solid LightGray;
+   }
+   .header {
+      border-bottom: 1px solid DimGray
+   }
+}
+
+
+@media screen and (max-width: 767px) {
+  .table {
+    display: block;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+   
+    margin-bottom: 10px;
+  }
+  .cell {
+    flex-basis: 100%;
+    padding: 5px;
+  }
+  .header {
+    display: none;
+  }
+}
+</style>
+
+<ul class="links-nextprev"><li>Next: <a href="/eleventy-base-blog/blog/yaml/">YAML Ain’t Markup Language</a></li>
+</ul>
+
+		</main>
+
+		<footer></footer>
+
+		<!-- Current page: /eleventy-base-blog/blog/markdown/ -->
+	</body>
+</html>
