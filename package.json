@@ -43,6 +43,11 @@
     "markdown-it-eleventy-img": "^0.10.0",
     "parse5": "^7.1.2",
     "render-dot": "^0.0.7",
-    "yaml": "^2.2.1"
+    "yaml": "^2.2.1",
+    "d3": "^7.8.4",
+    "json-stringify-pretty-compact": "^4.0.0"
+  },
+  "dependencies": {
+
   }
 }
