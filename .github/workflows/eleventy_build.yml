@@ -18,7 +18,7 @@ jobs:
         - uses: actions/checkout@v3
 
         - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v1
+          uses: actions/setup-node@v3
           with:
             node-version: ${{ matrix.node-version }}
 
@@ -34,15 +34,22 @@ jobs:
           run: npm run install-python
 
         - name: Check VENV
-          run: echo "VIRTUAL ENV:" $VIRTUAL_ENV
+          run: |
+            . ./python_venv/bin/activate
+            echo "VIRTUAL ENV:" $VIRTUAL_ENV
 
         - name: Install dependencies 
           run: npm ci
 
-        - name: Build
+        - name: build-ghpages
           run: npm run build-ghpages
 
-        - name: Deploy
+        - uses: actions/upload-artifact@v3
+          with:
+            name: site
+            path: ./_site
+            
+        - name: Deploy Pages
           uses: peaceiris/actions-gh-pages@v3
           with:
             deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
