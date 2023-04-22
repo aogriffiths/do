@@ -1,0 +1,5 @@
+virtualmachine:
+  hosts:
+    vm01:
+      ansible_user: vagrant
+      ansible_host: 192.168.1.4

@@ -1,0 +1,132 @@
+- name: Docker
+  hosts: virtualmachine
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Install aptitude
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: true
+
+    - name: Install required system packages
+      apt:
+        pkg:
+          - ca-certificates
+          - curl
+          - gnupg
+        state: latest
+        update_cache: true
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/debian/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/debian bullseye stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+
+    - name: Install required system packages
+      apt:
+        pkg:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: latest
+        update_cache: true
+
+    - name: Ensure group "docker" exists
+      ansible.builtin.group:
+        name: docker
+        state: present
+
+    - name: adding existing vagrant user to group docker
+      user:
+        name: vagrant
+        groups: docker
+        append: yes
+
+    - name: Install podman and debos
+      apt:
+        pkg:
+          - podman
+        state: latest
+        update_cache: true
+
+    - name: Touch nodocker
+      file:
+        path: /etc/containers/nodocker
+        state: touch
+        mode: u+rw,g-wx,o-rwx
+        modification_time: preserve
+        access_time: preserve
+
+    - name: pull debos
+      docker_image:
+        name: godebos/debos
+        source: pull
+
+
+    - name: debos dependencies 
+      apt:
+        pkg:
+          - git
+          - libglib2.0-dev
+          - libostree-dev
+          - qemu-system-x86
+          - qemu-user-static
+          - debootstrap
+          - systemd-container
+        state: latest
+        update_cache: true
+
+    - name: make sure go is not installed via the package manager
+      apt:
+        pkg:
+          - golang
+        state: absent
+        update_cache: true
+
+    # following https://go.dev/doc/install
+    # TODO not idempotent 
+    - name: Remove file (delete file)
+      file:
+        path: /usr/local/go # /usr/local/bin/go ?
+        state: absent
+
+    - name: Unarchive a file that needs to be downloaded (added in 2.0)
+      unarchive:
+        src: https://go.dev/dl/go1.20.3.linux-arm64.tar.gz
+        dest: /usr/local
+        remote_src: yes
+
+    - name: symlink go executable
+      ansible.builtin.file:
+        src:  /usr/local/bin/go
+        dest: /usr/local/go/bin/go
+        state: link
+
+    - name: populate /etc/environment
+      lineinfile:
+        path: "/etc/environment"
+        state: present
+        regexp: "^GOPATH="
+        line: "GOPATH=/opt/src/gocode"
+
+
+    - name: Install debos
+      command:
+        cmd: go install -v github.com/go-debos/debos/cmd/debos@latest
+        #creates: /path/to/database
+
+

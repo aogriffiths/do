@@ -8,6 +8,7 @@ const pluginBundle = require("@11ty/eleventy-plugin-bundle");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
+
 module.exports = function(eleventyConfig) {
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
@@ -25,6 +26,8 @@ module.exports = function(eleventyConfig) {
 	// App plugins
 	eleventyConfig.addPlugin(require("./eleventy.config.drafts.js"));
 	eleventyConfig.addPlugin(require("./eleventy.config.images.js"));
+	eleventyConfig.addPlugin(require("./eleventy.config.codetables.js"));
+	eleventyConfig.addPlugin(require("./eleventy.config.nbconvert.js"));
 
 	// Official plugins
 	eleventyConfig.addPlugin(pluginRss);
@@ -90,6 +93,7 @@ module.exports = function(eleventyConfig) {
 		}) //.use(markdownItEleventyImg);
 	});
 
+
 	// Features to make your build faster (when you need them)
 
 	// If your passthrough copy gets heavy and cumbersome, add this line
@@ -106,14 +110,15 @@ module.exports = function(eleventyConfig) {
 			"njk",
 			"html",
 			"liquid",
-			"png"
+			"png",
+			"ipynb"
 		],
 
 		// Pre-process *.md files with: (default: `liquid`)
-		markdownTemplateEngine: "njk",
+		// markdownTemplateEngine: "njk",
 
 		// Pre-process *.html files with: (default: `liquid`)
-		htmlTemplateEngine: "njk",
+		// htmlTemplateEngine: "njk",
 
 		// These are all optional:
 		dir: {

@@ -8,20 +8,28 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
         - uses: actions/checkout@v2
 
-        - name: Setup Node
+        - name: Use Node.js ${{ matrix.node-version }}
           uses: actions/setup-node@v1
           with:
-            node-version: '10.x'
+            node-version: ${{ matrix.node-version }}
 
-        - run: npm ci
+        - name: Install dependencies 
+          run: npm ci
 
-        - run: npm run build
+        - name: Build
+          run: npm run build-ghpages
+
 
         - name: Deploy
           uses: peaceiris/actions-gh-pages@v3
           with:
             deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-            publish_dir: ./dist
+            publish_dir: ./_site

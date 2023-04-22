@@ -1,0 +1,5 @@
+cpu: RK3399-T
+memory: 
+   short-description: LPDDR4
+   long-description: 64bit dual channel LPDDR4@3200Mb/s
+   size

@@ -1,4 +1,8 @@
-#MAc
+#Python
+python_venv
+.ipynb_checkpoints
+
+#Mac
 .DS_Store
 
 #11ty

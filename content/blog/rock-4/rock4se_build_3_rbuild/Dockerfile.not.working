@@ -1,0 +1,44 @@
+FROM debian:bookworm
+
+RUN export DEBIAN_FRONTEND=noninteractive \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends \
+     git \
+ && rm -rf /var/lib/apt/lists/*
+
+# https://stackoverflow.com/questions/64462922/docker-multi-stage-build-go-image-x509-certificate-signed-by-unknown-authorit
+
+RUN export DEBIAN_FRONTEND=noninteractive \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends \
+     ca-certificates \
+     openssl \
+ && rm -rf /var/lib/apt/lists/*
+
+# https://github.com/go-debos/debos
+
+RUN export DEBIAN_FRONTEND=noninteractive \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends \
+     golang git libglib2.0-dev libostree-dev qemu-system-x86 \
+     qemu-user-static debootstrap systemd-container \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN export DEBIAN_FRONTEND=noninteractive \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends \
+     gcc \
+ && rm -rf /var/lib/apt/lists/*
+
+ENV GOPATH=/opt/src/gocode 
+
+ARG cert_location=/usr/local/share/ca-certificates
+
+# Get certificate from "github.com"
+RUN openssl s_client -showcerts -connect github.com:443 </dev/null 2>/dev/null|openssl x509 -outform PEM > ${cert_location}/github.crt
+# Get certificate from "proxy.golang.org"
+RUN openssl s_client -showcerts -connect proxy.golang.org:443 </dev/null 2>/dev/null|openssl x509 -outform PEM >  ${cert_location}/proxy.golang.crt
+# Update certificates
+RUN update-ca-certificates
+
+RUN go install -v github.com/go-debos/debos/cmd/debos@latest
