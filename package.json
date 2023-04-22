@@ -9,7 +9,7 @@
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
     "debugstart": "DEBUG='Eleventy* nbconvert*' npx @11ty/eleventy --serve --quiet",
     "benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
-    "install-python": "python -m venv python_venv && source python_venv/bin/activate && pip install -r requirements.txt"
+    "install-python": "python -m venv python_venv && . ./python_venv/bin/activate && pip install -r requirements.txt"
   },
   "repository": {
     "type": "git",
