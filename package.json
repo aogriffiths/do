@@ -4,7 +4,7 @@
   "description": "Writing about things I do",
   "scripts": {
     "build": "npx @11ty/eleventy",
-    "build-ghpages": "env NODE_ENV=production npx @11ty/eleventy --pathprefix=/eleventy-base-blog/",
+    "build-ghpages": "env NODE_ENV=production npx @11ty/eleventy --pathprefix=/do/",
     "start": "npx @11ty/eleventy --serve --quiet",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
     "debugstart": "DEBUG='Eleventy* nbconvert*' npx @11ty/eleventy --serve --quiet",
