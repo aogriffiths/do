@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:base="en">
 	<title>Do</title>
 	<subtitle>Writing about things I do</subtitle>
-	<link href="https://aogriffiths.github.io/eleventy-base-blog/feed/feed.xml" rel="self"/>
-	<link href="https://aogriffiths.github.io/eleventy-base-blog/do/"/>
+	<link href="https://aogriffiths.github.io/do/feed/feed.xml" rel="self"/>
+	<link href="https://aogriffiths.github.io/do/do/"/>
 	<updated>2023-04-25T00:00:00Z</updated>
 	<id>https://aogriffiths.github.io/do/</id>
 	<author>
@@ -13,12 +13,12 @@
 	
 	<entry>
 		<title>Rock4 SE custom OS, the old way</title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/"/>
+		<link href="https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_1_bsp/"/>
 		<updated>2023-04-25T00:00:00Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/</id>
+		<id>https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_1_bsp/</id>
 		<content type="html">&lt;p&gt;The official Rock 4 SE Debian 11 (Buster) image does not have AppArmor enabled To create a custom image we will use the &lt;a href=&quot;https://github.com/radxa/rockchip-bsp&quot;&gt;Radxa Board Support Package&lt;/a&gt; (BSP).&lt;/p&gt;
 &lt;p&gt;Take the following steps on machine of your choice, they should be  adaptable to work on a Windows, Mac or Linux machine, but have only been tested on a Mac.&lt;/p&gt;
-&lt;h2 id=&quot;steps&quot; tabindex=&quot;-1&quot;&gt;Steps &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;steps&quot; tabindex=&quot;-1&quot;&gt;Steps &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_1_bsp/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Install dependencies&lt;/strong&gt;&lt;/p&gt;
@@ -158,7 +158,7 @@
 &lt;p&gt;The final step is to flash &lt;code&gt;system.img&lt;/code&gt; to an SD card. Balena Etcher is a good choice for this.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&quot;references&quot; tabindex=&quot;-1&quot;&gt;References &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;references&quot; tabindex=&quot;-1&quot;&gt;References &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_1_bsp/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;https://wiki.radxa.com/Rock3/dev/Debian&lt;/li&gt;
 &lt;li&gt;https://wiki.radxa.com/Rockpi4/dev/Debian&lt;/li&gt;
@@ -169,13 +169,13 @@
 	
 	<entry>
 		<title>Rock4 SE custom OS, the old way + arm</title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/arm_build/"/>
+		<link href="https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_1_bsp/arm_build/"/>
 		<updated>2023-04-25T00:00:00Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/arm_build/</id>
+		<id>https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_1_bsp/arm_build/</id>
 		<content type="html">&lt;p&gt;THESE INSTRUCTIONS DO NOT WORK. They go a long way to working and are shared her ein case it&#39;s ever interesting to anyone.&lt;/p&gt;
 &lt;p&gt;The official Rock 4 SE Debian 11 (Buster) image does not have AppArmor enabled, which Home Assistant requires. To create a custom image we will use the &lt;a href=&quot;https://github.com/radxa/rockchip-bsp&quot;&gt;Radxa Board Support Package&lt;/a&gt; (BSP).&lt;/p&gt;
 &lt;p&gt;Take the following steps on machine of your choice, they should be  adaptable to work on a Windows, Mac or Linux machine, but have only been tested on an intel Mac.&lt;/p&gt;
-&lt;h2 id=&quot;steps&quot; tabindex=&quot;-1&quot;&gt;Steps &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/arm_build/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;steps&quot; tabindex=&quot;-1&quot;&gt;Steps &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_1_bsp/arm_build/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Install dependencies&lt;/strong&gt;&lt;/p&gt;
@@ -348,7 +348,7 @@ ls out/u-boot/
 &lt;p&gt;The final step is to flash &lt;code&gt;system.img&lt;/code&gt; to an SD card. Balena Etcher is a good choice for this.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&quot;references&quot; tabindex=&quot;-1&quot;&gt;References &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/arm_build/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;references&quot; tabindex=&quot;-1&quot;&gt;References &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_1_bsp/arm_build/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;https://wiki.radxa.com/Rock3/dev/Debian&lt;/li&gt;
 &lt;li&gt;https://wiki.radxa.com/Rockpi4/dev/Debian&lt;/li&gt;
@@ -359,9 +359,9 @@ ls out/u-boot/
 	
 	<entry>
 		<title></title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/"/>
-		<updated>2023-04-22T22:36:27Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/</id>
+		<link href="https://aogriffiths.github.io/do/blog/rock-4/video/"/>
+		<updated>2023-04-23T06:03:46Z</updated>
+		<id>https://aogriffiths.github.io/do/blog/rock-4/video/</id>
 		<content type="html">&lt;p&gt;Coxles four
 https://www.youtube.com/watch?v=r7Qe3e2rb0U&lt;/p&gt;
 &lt;p&gt;Options
@@ -413,7 +413,7 @@ ffplay -loop 0 test2.mp4
 &lt;pre&gt;&lt;code&gt;ffmpeg -y -i original.webm -i original.webm  -ss $VIDEOSS -t $VIDEOT -filter_complex &amp;quot;crop=iw*3/16:ih*3/12:iw*11/16:ih*7/12, [0:v]overlay=0:100+t*7.4, drawbox=x=30:y=185:w=50:h=50:c=red&amp;quot; -c:a copy  test2.mp4
 ffplay -loop 0 test2.mp4
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&quot;4-step-4&quot; tabindex=&quot;-1&quot;&gt;4 STEP 4 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;4-step-4&quot; tabindex=&quot;-1&quot;&gt;4 STEP 4 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/video/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;to crop it:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ffmpeg -y -i original.webm -i original.webm  -ss $VIDEOSS -t $VIDEOT -filter_complex &amp;quot;crop=iw*3/16:ih*3/12:iw*11/16:ih*7/12, [0:v]overlay=0:100+t*$SHIFT, boxblur=1, histeq, crop=x=30:y=175:w=50:h=50, vignette=a=0.1&amp;quot; -c:a copy  test2.mp4
 &lt;/code&gt;&lt;/pre&gt;
@@ -427,7 +427,7 @@ to get a 16x16&lt;/li&gt;
 &lt;p&gt;scale=320:240&lt;/p&gt;
 &lt;p&gt;=============&lt;/p&gt;
 &lt;p&gt;The example here is a video of Steve Redgrave&#39;s record-breaking fifth gold medal at the Sydney 2000 Olypics see &lt;a href=&quot;https://www.youtube.com/watch?v=r7Qe3e2rb0U&quot;&gt;here&lt;/a&gt;. The second from 2:38 to 2:54 gives a reasonable quality close up without too much camera vibration or movement to contend with.&lt;/p&gt;
-&lt;h2 id=&quot;1-get-a-clip-from-the-original-footage&quot; tabindex=&quot;-1&quot;&gt;1. Get a clip from the original footage &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;1-get-a-clip-from-the-original-footage&quot; tabindex=&quot;-1&quot;&gt;1. Get a clip from the original footage &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/video/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Downloading the full video will take time, you can get a small part using &lt;code&gt;yt-dlp&lt;/code&gt; and postprocessor arguments. Add a good margin arround the section of the clip you want to be sure to get a keyframe preceeding it.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;VIDEOURL=https://www.youtube.com/watch?v=r7Qe3e2rb0U
 VIDEOSS=00:02:30.00
@@ -435,7 +435,7 @@ VIDEOT=00:00:20.00
 
 yt-dlp --postprocessor-args &amp;quot;-ss $VIDEOSS -t $VIDEOT&amp;quot; $VIDEOURL --force-overwrites -o &amp;quot;step1_original.%(ext)s&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&quot;2-inspect&quot; tabindex=&quot;-1&quot;&gt;2. Inspect &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;2-inspect&quot; tabindex=&quot;-1&quot;&gt;2. Inspect &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/video/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;To inspect the clip, and choose the exact frames you need, create a copy with a grid and timestamps.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ffmpeg -i step1_original.webm -y -c:a copy -vf &amp;quot;\
 drawtext=text=&#39;%{n}. %{pts\:hms}&#39;\
@@ -471,7 +471,7 @@ select=eq(n\,$FRAMENUMBER)&amp;quot; \
 step2_timestamped.png
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Which uses the &lt;code&gt;-vframes 1&lt;/code&gt; option and the &lt;code&gt;select=eq(n\,$FRAMENUMBER)&lt;/code&gt; filter.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/step2_timestamped.mp4&quot;&gt;&lt;img src=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/step2_timestamped.png&quot; alt=&quot;step2_timestamped.mp4&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://aogriffiths.github.io/do/blog/rock-4/video/step2_timestamped.mp4&quot;&gt;&lt;img src=&quot;https://aogriffiths.github.io/do/blog/rock-4/video/step2_timestamped.png&quot; alt=&quot;step2_timestamped.mp4&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;To control the playback with ffplay use:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;left arrow ...... 10 seconds backwardss
 right arrow ..... 10 seconds forward
@@ -492,7 +492,7 @@ s ............... Step to the next frame
 &lt;blockquote&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;Side note:&lt;/strong&gt;&lt;/em&gt; This maths shows a rate of 39.5 stokes per minute for the crew (60 / 1.52 = 39.5). However, the BBC commertary of the event quoted 36 - 38 stokes per miniute for the British at this part of the race. There could be several factors leading to the discrepancy but the crew was steadily increasing their rate at the time and it in all likelyhood they were one step ahead of the comentary.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;3-trim-the-clip&quot; tabindex=&quot;-1&quot;&gt;3. Trim the clip &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;3-trim-the-clip&quot; tabindex=&quot;-1&quot;&gt;3. Trim the clip &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/video/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;You may notice there is a lag in the video starting when playing &lt;code&gt;step2_timestamped.mp4&lt;/code&gt;. This is becuase the playback requires a keyframe before the video can be rendered.&lt;/p&gt;
 &lt;p&gt;So, 10 to 47&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;VIDEOSS=00:00:04.086
@@ -517,7 +517,7 @@ drawbox=x=60:y=100:w=416:h=416:c=red&amp;quot; \
 
 ffplay -loop 0 step3_section.mp4
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&quot;4-step-4-1&quot; tabindex=&quot;-1&quot;&gt;4 STEP 4 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;4-step-4-1&quot; tabindex=&quot;-1&quot;&gt;4 STEP 4 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/video/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;to crop it, instead o drawing abox&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ffmpeg -y -i original.webm -i original.webm  -ss $VIDEOSS -t $VIDEOT -filter_complex &amp;quot;\
 crop=x=ih*$X/16:y=ih*$Y/16:w=ih*$W/16:h=ih*$H/16, \
@@ -528,7 +528,7 @@ crop=x=60:y=100:w=416:h=416&amp;quot; \
 ffplay -loop 0 step4_crop.mp4
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&quot;5-step-5&quot; tabindex=&quot;-1&quot;&gt;5 STEP 5 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;5-step-5&quot; tabindex=&quot;-1&quot;&gt;5 STEP 5 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/video/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;scale down flags=lanczos
 16x16&lt;/p&gt;
 &lt;p&gt;instead of drawing the grid
@@ -570,9 +570,9 @@ ffplay -loop 0 out.gif
 	
 	<entry>
 		<title></title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/qemu/"/>
-		<updated>2023-04-22T22:36:27Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/qemu/</id>
+		<link href="https://aogriffiths.github.io/do/blog/qemu/"/>
+		<updated>2023-04-23T06:03:46Z</updated>
+		<id>https://aogriffiths.github.io/do/blog/qemu/</id>
 		<content type="html">&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;install and test&lt;/p&gt;
@@ -608,9 +608,9 @@ qemu-img create -f qcow2 ~/vm_debian/disk.qcow2 40G
 	
 	<entry>
 		<title>Custom Vagrant Box</title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/custom_vagrant_box/"/>
+		<link href="https://aogriffiths.github.io/do/blog/custom_vagrant_box/"/>
 		<updated>2023-04-20T00:00:00Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/custom_vagrant_box/</id>
+		<id>https://aogriffiths.github.io/do/blog/custom_vagrant_box/</id>
 		<content type="html">&lt;p&gt;Here&#39;s how to create a custom vagrant box for Debian Arm 64. The process is similar for any OX, any architecture.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Install VMware&lt;/li&gt;
@@ -698,13 +698,13 @@ end
 	
 	<entry>
 		<title>Rock4 SE Debian Build</title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_3_rbuild/"/>
+		<link href="https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_3_rbuild/"/>
 		<updated>2023-03-25T00:00:00Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_3_rbuild/</id>
+		<id>https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_3_rbuild/</id>
 		<content type="html">&lt;p&gt;The build of the system image is done using
 &lt;a href=&quot;https://github.com/radxa-build/rock-4se/blob/main/.github/workflows/build.yml&quot;&gt;radxa-build/rock-4se&lt;/a&gt; and
 &lt;a href=&quot;https://github.com/radxa-repo/rbuild&quot;&gt;radxa-repo/rbuild&lt;/a&gt; using docker.&lt;/p&gt;
-&lt;h1 id=&quot;vagrant-method&quot; tabindex=&quot;-1&quot;&gt;Vagrant Method &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_3_rbuild/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;vagrant-method&quot; tabindex=&quot;-1&quot;&gt;Vagrant Method &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_3_rbuild/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Install vagrant&lt;/p&gt;
@@ -742,7 +742,7 @@ Inside the docker container run:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre&gt;&lt;code&gt;./rbuild
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&quot;docker-method-not-working&quot; tabindex=&quot;-1&quot;&gt;Docker Method (Not Working) &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_3_rbuild/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;docker-method-not-working&quot; tabindex=&quot;-1&quot;&gt;Docker Method (Not Working) &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_3_rbuild/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;This method does not work, yet, but it&#39;s included here in case it can be made to work at some stage.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -783,13 +783,13 @@ Inside the docker container run:&lt;/li&gt;
 	
 	<entry>
 		<title>Rock4 SE Debian Build</title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_2_deb_build/"/>
+		<link href="https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_2_deb_build/"/>
 		<updated>2023-03-25T00:00:00Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_2_deb_build/</id>
+		<id>https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_2_deb_build/</id>
 		<content type="html">&lt;p&gt;The build of the system image is done using the &lt;a href=&quot;https://github.com/radxa/debos-radxa.git&quot;&gt;debos-radxa&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;WARNING These instructions are incomplete and untested. &lt;a href=&quot;https://github.com/radxa/debos-radxa.git&quot;&gt;debos-radxa&lt;/a&gt; is being replaced by &lt;a href=&quot;https://github.com/radxa-repo/rbuild&quot;&gt;rbuild&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;It includes a bespoke Dockerfile to create a build environment but instructions in the README use the standard debos docker image &lt;code&gt;godebos/debos&lt;/code&gt;. The README also takes the approach of keeping the source on the parent machine and bind mounting it to the docker container. This works on linux machines but can run in to issue son Mac or Windows, so we take a different aproach here.&lt;/p&gt;
-&lt;h1 id=&quot;dry-run&quot; tabindex=&quot;-1&quot;&gt;Dry Run &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_2_deb_build/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;dry-run&quot; tabindex=&quot;-1&quot;&gt;Dry Run &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_2_deb_build/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;To build a standard image take the following steps:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Create a docker volume for the source&lt;/li&gt;
@@ -824,7 +824,7 @@ git clone https://github.com/radxa/debos-radxa.git ./
 exit
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then burn this image to an SD card and boot it up.&lt;/p&gt;
-&lt;h1 id=&quot;change-the-kernal&quot; tabindex=&quot;-1&quot;&gt;Change the Kernal &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_2_deb_build/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;change-the-kernal&quot; tabindex=&quot;-1&quot;&gt;Change the Kernal &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_2_deb_build/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;Run the following:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;dpkg -I ./rootfs/packages/arm64/kernel/linux-4.4-rock-pi-4-latest_4.4.154-116-rockchip_all.deb
 &lt;/code&gt;&lt;/pre&gt;
@@ -843,9 +843,9 @@ rockpi-4b-debian-bullseye-xfce4-arm64-20230209-0645-gpt.img.xz&lt;/p&gt;
 	
 	<entry>
 		<title>Home Assistant Rocks!</title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/harocks/"/>
+		<link href="https://aogriffiths.github.io/do/blog/rock-4/harocks/"/>
 		<updated>2023-03-25T00:00:00Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/harocks/</id>
+		<id>https://aogriffiths.github.io/do/blog/rock-4/harocks/</id>
 		<content type="html">&lt;p&gt;Home Assistant is a fantastic way to bring all your smart devices together in to one smart home. With very little effort you get a slick UI, companion app, remote access (courtesy of Nubu Casa), user configurable automations and much more. But it’s not limited to just that.&lt;/p&gt;
 &lt;p&gt;This article will show you how to do a few things beyond the basics, like&lt;/p&gt;
 &lt;ul&gt;
@@ -955,7 +955,7 @@ Total - £60-75&lt;/p&gt;
 Home Assitant OS dosn&#39;t yet support the Rock 4 and until it does we will need to set up a clean Debian OS manually.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;part-4-tbc&quot; tabindex=&quot;-1&quot;&gt;Part 4 - TBC &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/harocks/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;part-4-tbc&quot; tabindex=&quot;-1&quot;&gt;Part 4 - TBC &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/harocks/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;configuration.yaml:
 /usr/share/hassio/homeassistant&lt;/p&gt;
 &lt;p&gt;RK3399-T&lt;/p&gt;
@@ -977,7 +977,7 @@ printenv  bootargs&lt;/p&gt;
 &lt;p&gt;consider for machine name mDNS&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apt install avahi-daemon
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&quot;end&quot; tabindex=&quot;-1&quot;&gt;--------- END --------- &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/harocks/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;end&quot; tabindex=&quot;-1&quot;&gt;--------- END --------- &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/harocks/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;RDP&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;? https://www.digitalocean.com/community/tutorials/how-to-enable-remote-desktop-protocol-using-xrdp-on-ubuntu-22-04&lt;/li&gt;
@@ -1018,12 +1018,12 @@ append earlyprintk console=ttyFIQ0,1500000n8 rw init=/sbin/init rootfstype=ext4 
 	
 	<entry>
 		<title>Home Assistant on Debian on Rock 4 SE</title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/ha_on_rock_4_se/"/>
+		<link href="https://aogriffiths.github.io/do/blog/rock-4/ha_on_rock_4_se/"/>
 		<updated>2023-03-25T00:00:00Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/ha_on_rock_4_se/</id>
-		<content type="html">&lt;h1 id=&quot;home-assistant-on-debian-on-rock-4-se&quot; tabindex=&quot;-1&quot;&gt;Home Assistant on Debian on Rock 4 SE &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/ha_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+		<id>https://aogriffiths.github.io/do/blog/rock-4/ha_on_rock_4_se/</id>
+		<content type="html">&lt;h1 id=&quot;home-assistant-on-debian-on-rock-4-se&quot; tabindex=&quot;-1&quot;&gt;Home Assistant on Debian on Rock 4 SE &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/ha_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;This installtion method is know as the &amp;quot;Supervised&amp;quot; method. It&#39;s required becuase Home Assistant OS dosn&#39;t yet support the rock pi, but hopfully it will one day.&lt;/p&gt;
-&lt;h2 id=&quot;steps-part-1-install&quot; tabindex=&quot;-1&quot;&gt;Steps - Part 1 - Install &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/ha_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;steps-part-1-install&quot; tabindex=&quot;-1&quot;&gt;Steps - Part 1 - Install &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/ha_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Enable App Armor in the kernal&lt;/p&gt;
@@ -1217,7 +1217,7 @@ sudo dpkg -i homeassistant-supervised.deb
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;steps-part-2-setup-home-assitant&quot; tabindex=&quot;-1&quot;&gt;Steps - Part 2 - Setup Home Assitant &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/ha_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;steps-part-2-setup-home-assitant&quot; tabindex=&quot;-1&quot;&gt;Steps - Part 2 - Setup Home Assitant &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/ha_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;You may need to wait a few minutes but next step is to setup Home Assistant with the basics, through the UI.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -1236,11 +1236,11 @@ sudo dpkg -i homeassistant-supervised.deb
 &lt;p&gt;Set the step to set up devices, we can come back tot heat later.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/ha_on_rock_4_se/step2_ha_config.gif&quot; alt=&quot;Seting Up HA&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;conclusion&quot; tabindex=&quot;-1&quot;&gt;Conclusion &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/ha_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://aogriffiths.github.io/do/blog/rock-4/ha_on_rock_4_se/step2_ha_config.gif&quot; alt=&quot;Seting Up HA&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot; tabindex=&quot;-1&quot;&gt;Conclusion &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/ha_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;You now have a workong Home Asssitant installtionon a Rock 4 SE!&lt;/p&gt;
-&lt;p&gt;Consider &lt;a href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/ha_on_rock_4_se/custom_ha.md&quot;&gt;Customising Home Assistant&lt;/a&gt; next.&lt;/p&gt;
-&lt;h2 id=&quot;references&quot; tabindex=&quot;-1&quot;&gt;References &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/ha_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Consider &lt;a href=&quot;https://aogriffiths.github.io/do/blog/rock-4/ha_on_rock_4_se/custom_ha.md&quot;&gt;Customising Home Assistant&lt;/a&gt; next.&lt;/p&gt;
+&lt;h2 id=&quot;references&quot; tabindex=&quot;-1&quot;&gt;References &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/ha_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.home-assistant.io/installation/&quot;&gt;Home Asssitant Instalation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.home-assistant.io/installation/linux#install-home-assistant-supervised&quot;&gt;Home Assistant Supervised&lt;/a&gt; (see end of the page)&lt;/li&gt;
@@ -1251,15 +1251,15 @@ sudo dpkg -i homeassistant-supervised.deb
 	
 	<entry>
 		<title>Debian on Rock 4 SE</title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/debian_on_rock_4_se/"/>
+		<link href="https://aogriffiths.github.io/do/blog/rock-4/debian_on_rock_4_se/"/>
 		<updated>2023-03-25T00:00:00Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/debian_on_rock_4_se/</id>
-		<content type="html">&lt;h1 id=&quot;&quot; tabindex=&quot;-1&quot;&gt; &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/debian_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+		<id>https://aogriffiths.github.io/do/blog/rock-4/debian_on_rock_4_se/</id>
+		<content type="html">&lt;h1 id=&quot;&quot; tabindex=&quot;-1&quot;&gt; &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/debian_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;This giude will take you through how to install Debian on a Rock 4 SE and make some tweeks. The tweeks are to support Home Asssistant, but even if you&#39;re not planning to use Home Assitant you may find them usful, particularly if you want to run docker or app armor.&lt;/p&gt;
 &lt;p&gt;The approach taken includes two things that are less common in other tutoruals:&lt;/p&gt;
 &lt;p&gt;Firstly, installing a custom kernal and changing kernal parameters.&lt;/p&gt;
 &lt;p&gt;Sceond, getting ssh access to the board early as possible, which will allow you to configure it from another machine, which is easier than juggling an extra keyboard, mouse and screen.&lt;/p&gt;
-&lt;h2 id=&quot;steps&quot; tabindex=&quot;-1&quot;&gt;Steps &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/debian_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;steps&quot; tabindex=&quot;-1&quot;&gt;Steps &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/debian_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Download&lt;/strong&gt;&lt;/p&gt;
@@ -1291,7 +1291,7 @@ sudo dpkg -i homeassistant-supervised.deb
 &lt;p&gt;Change your password&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;passwd rock
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/debian_on_rock_4_se/step1_password.gif&quot; alt=&quot;Seting Password&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://aogriffiths.github.io/do/blog/rock-4/debian_on_rock_4_se/step1_password.gif&quot; alt=&quot;Seting Password&quot;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -1384,10 +1384,10 @@ exit
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&quot;conclusion-and-next-steps&quot; tabindex=&quot;-1&quot;&gt;Conclusion and Next Steps &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/debian_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;conclusion-and-next-steps&quot; tabindex=&quot;-1&quot;&gt;Conclusion and Next Steps &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/debian_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;You now have a Debian, docker and some kernal evel tweeks on a Rock 4 SE!&lt;/p&gt;
-&lt;p&gt;Consider &lt;a href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/debian_on_rock_4_se/ha_on_rock_4_se.md&quot;&gt;installing Home Assistant&lt;/a&gt;  next.&lt;/p&gt;
-&lt;h2 id=&quot;references&quot; tabindex=&quot;-1&quot;&gt;References &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/debian_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Consider &lt;a href=&quot;https://aogriffiths.github.io/do/blog/rock-4/debian_on_rock_4_se/ha_on_rock_4_se.md&quot;&gt;installing Home Assistant&lt;/a&gt;  next.&lt;/p&gt;
+&lt;h2 id=&quot;references&quot; tabindex=&quot;-1&quot;&gt;References &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/rock-4/debian_on_rock_4_se/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.okdo.com/getting-started/get-started-with-rock-4-se-and-debian/&quot;&gt;Rock 4 SE&lt;/a&gt; (on OKdo.com)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.okdo.com/getting-started/get-started-with-rock-4c-single-board-computer-debian/&quot;&gt;Rock 4C+&lt;/a&gt; (on OKdo.com)&lt;/li&gt;
@@ -1401,9 +1401,9 @@ exit
 	
 	<entry>
 		<title>Python Rainbow</title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/mysticrose/rainbow/"/>
+		<link href="https://aogriffiths.github.io/do/blog/mysticrose/rainbow/"/>
 		<updated>2023-03-25T00:00:00Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/mysticrose/rainbow/</id>
+		<id>https://aogriffiths.github.io/do/blog/mysticrose/rainbow/</id>
 		<content type="html">&lt;!-- body --&gt;
 
 
@@ -1567,18 +1567,18 @@ exit
 	
 	<entry>
 		<title>Mystic Rose</title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/mysticrose/"/>
+		<link href="https://aogriffiths.github.io/do/blog/mysticrose/"/>
 		<updated>2023-03-25T00:00:00Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/mysticrose/</id>
+		<id>https://aogriffiths.github.io/do/blog/mysticrose/</id>
 		<content type="html">&lt;p&gt;Mystic Rose&lt;/p&gt;
 </content>
 	</entry>
 	
 	<entry>
 		<title>YAML Ain’t Markup Language</title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/yaml/"/>
+		<link href="https://aogriffiths.github.io/do/blog/yaml/"/>
 		<updated>2023-01-30T00:00:00Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/yaml/</id>
+		<id>https://aogriffiths.github.io/do/blog/yaml/</id>
 		<content type="html">&lt;p&gt;In fact, it&#39;s &amp;quot;a data serialization language designed to be human-friendly and work well with modern programming languages for common everyday tasks&amp;quot;. It is typically used for configuration files, data storage, and transmission.&lt;/p&gt;
 &lt;p&gt;Data has three basic primitive types:&lt;/p&gt;
 &lt;ol&gt;
@@ -1591,7 +1591,7 @@ exit
 &lt;li&gt;Block - uses newlines and indentation&lt;/li&gt;
 &lt;li&gt;Flow - a more compact form&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&quot;borrowed-concepts&quot; tabindex=&quot;-1&quot;&gt;Borrowed Concepts &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/yaml/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;borrowed-concepts&quot; tabindex=&quot;-1&quot;&gt;Borrowed Concepts &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/yaml/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;YAML borrows concepts from many places including:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Python:&lt;/strong&gt; indentation to indicate nesting in the block style&lt;/li&gt;
@@ -1602,11 +1602,11 @@ exit
 &lt;li&gt;&lt;strong&gt;C:&lt;/strong&gt; backslash &amp;quot;&lt;code&gt;\&lt;/code&gt;&amp;quot; escapes sequences&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;HTML/CSS:&lt;/strong&gt; collapsing whitespace&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&quot;basic-primitive-data-types&quot; tabindex=&quot;-1&quot;&gt;Basic primitive data types &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/yaml/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;h2 id=&quot;mappings&quot; tabindex=&quot;-1&quot;&gt;Mappings &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/yaml/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h1 id=&quot;basic-primitive-data-types&quot; tabindex=&quot;-1&quot;&gt;Basic primitive data types &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/yaml/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id=&quot;mappings&quot; tabindex=&quot;-1&quot;&gt;Mappings &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/yaml/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Python has a dictionaries, javascript has objects with properties, other languages might have hashmaps or associative arrays, but they all have one thing in common; they map keys to values. Yaml does this using mappings.&lt;/p&gt;
 &lt;p&gt;The syntax is simply &amp;quot;&lt;code&gt;key: value&lt;/code&gt;&amp;quot; but note the space after the colon.&lt;/p&gt;
-&lt;h3 id=&quot;examples&quot; tabindex=&quot;-1&quot;&gt;Examples &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/yaml/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;examples&quot; tabindex=&quot;-1&quot;&gt;Examples &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/yaml/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Scalars to scalars:&lt;/p&gt;
 &lt;table class=&quot;responsive&quot;&gt;
 &lt;tr&gt;
@@ -1627,9 +1627,9 @@ exit
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/table&gt;
-&lt;h2 id=&quot;sequences&quot; tabindex=&quot;-1&quot;&gt;Sequences &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/yaml/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;sequences&quot; tabindex=&quot;-1&quot;&gt;Sequences &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/yaml/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Sequences in yaml are just ordered lists of items. Each item must be precented by &amp;quot;&lt;code&gt;- &lt;/code&gt;&amp;quot; (note the space after the colon) and idented to the same level.&lt;/p&gt;
-&lt;h3 id=&quot;examples-1&quot; tabindex=&quot;-1&quot;&gt;Examples &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/yaml/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;examples-1&quot; tabindex=&quot;-1&quot;&gt;Examples &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/yaml/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Array of scalars:&lt;/p&gt;
 &lt;table class=&quot;responsive&quot;&gt;
 &lt;tr&gt;
@@ -1834,38 +1834,38 @@ table.responsive td {
 	
 	<entry>
 		<title>Opinionated Markdown Guide</title>
-		<link href="https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/"/>
+		<link href="https://aogriffiths.github.io/do/blog/markdown/"/>
 		<updated>2023-01-30T00:00:00Z</updated>
-		<id>https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/</id>
+		<id>https://aogriffiths.github.io/do/blog/markdown/</id>
 		<content type="html">&lt;p&gt;Markdown is simple, effective way to document your stuff. From README&#39;s and project docs to making a blog markdown can do the trick.&lt;/p&gt;
 &lt;p&gt;Here&#39;s a cheat sheet, collection of hacks and style guide. It is intended to work with github (github formatted markdown) and jekyll (often used for github pages). although there is more than one way to do things with markdown, this guide doesn&#39;t get in to that, it offers one way. This makes it quick to follow, consistent an opinionated markdown guide (you can call it the OMG if you want).&lt;/p&gt;
-&lt;h2 id=&quot;headings&quot; tabindex=&quot;-1&quot;&gt;Headings &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;headings&quot; tabindex=&quot;-1&quot;&gt;Headings &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class=&quot;table&quot;&gt;
 &lt;div class=&quot;row header&quot;&gt;&lt;div class=&quot;cell&quot;&gt;Markdown&lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;Result&lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt;
 &lt;pre class=&quot;language-markdown&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token title important&quot;&gt;**Title**&lt;br&gt;&lt;span class=&quot;token punctuation&quot;&gt;=========&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;
-&lt;h1 id=&quot;title&quot; tabindex=&quot;-1&quot;&gt;&lt;strong&gt;Title&lt;/strong&gt; &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;title&quot; tabindex=&quot;-1&quot;&gt;&lt;strong&gt;Title&lt;/strong&gt; &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt;
 &lt;pre class=&quot;language-markdown&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token title important&quot;&gt;Heading L1&lt;br&gt;&lt;span class=&quot;token punctuation&quot;&gt;==========&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;
-&lt;h1 id=&quot;heading-l1&quot; tabindex=&quot;-1&quot;&gt;Heading L1 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;heading-l1&quot; tabindex=&quot;-1&quot;&gt;Heading L1 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt;
 &lt;pre class=&quot;language-markdown&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token title important&quot;&gt;Heading L2&lt;br&gt;&lt;span class=&quot;token punctuation&quot;&gt;----------&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;
-&lt;h2 id=&quot;heading-l2&quot; tabindex=&quot;-1&quot;&gt;Heading L2 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;heading-l2&quot; tabindex=&quot;-1&quot;&gt;Heading L2 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt;
 &lt;pre class=&quot;language-markdown&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token title important&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;###&lt;/span&gt; Heading L3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;
-&lt;h3 id=&quot;heading-l3&quot; tabindex=&quot;-1&quot;&gt;Heading L3 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;heading-l3&quot; tabindex=&quot;-1&quot;&gt;Heading L3 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt;
 &lt;pre class=&quot;language-markdown&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token title important&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;####&lt;/span&gt; Heading L4&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;
-&lt;h4 id=&quot;heading-l4&quot; tabindex=&quot;-1&quot;&gt;Heading L4 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;heading-l4&quot; tabindex=&quot;-1&quot;&gt;Heading L4 &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt;
 &lt;pre class=&quot;language-markdown&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token title important&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;#####&lt;/span&gt; Heading L5&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
@@ -1878,7 +1878,7 @@ table.responsive td {
 &lt;h6&gt;Heading L6&lt;/h6&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;h3 id=&quot;notes&quot; tabindex=&quot;-1&quot;&gt;Notes &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;notes&quot; tabindex=&quot;-1&quot;&gt;Notes &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;Do not use the &lt;code&gt;Title&lt;/code&gt; or &lt;code&gt;Heading 1&lt;/code&gt; format anywhere.&lt;/li&gt;
 &lt;li&gt;Use underlines &lt;code&gt;---&lt;/code&gt; for and L2 and &lt;code&gt;###&lt;/code&gt; for L3 to L6. Make the underlines the same length as the heading.&lt;/li&gt;
@@ -1902,7 +1902,7 @@ table.responsive td {
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;paragraph-text&quot; tabindex=&quot;-1&quot;&gt;Paragraph Text &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;paragraph-text&quot; tabindex=&quot;-1&quot;&gt;Paragraph Text &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class=&quot;table&quot;&gt;
 &lt;div class=&quot;row header&quot;&gt;&lt;div class=&quot;cell&quot;&gt;Markdown&lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;Result&lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt;
@@ -1927,7 +1927,7 @@ of lines for&lt;br&gt;
 line breaks&lt;/p&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;h2 id=&quot;lists&quot; tabindex=&quot;-1&quot;&gt;Lists &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;lists&quot; tabindex=&quot;-1&quot;&gt;Lists &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class=&quot;table&quot;&gt;
 &lt;div class=&quot;row header&quot;&gt;&lt;div class=&quot;cell&quot;&gt;Markdown&lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;Result&lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt; 
@@ -1979,7 +1979,7 @@ line breaks&lt;/p&gt;
 &lt;/ol&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;h3 id=&quot;notes-1&quot; tabindex=&quot;-1&quot;&gt;Notes &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;notes-1&quot; tabindex=&quot;-1&quot;&gt;Notes &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Bullet using &lt;code&gt;-&lt;/code&gt;&lt;/p&gt;
@@ -1994,7 +1994,7 @@ line breaks&lt;/p&gt;
 &lt;p&gt;Indent any other contnet with 2 spaces&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&quot;formatting&quot; tabindex=&quot;-1&quot;&gt;Formatting &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;formatting&quot; tabindex=&quot;-1&quot;&gt;Formatting &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class=&quot;table&quot;&gt;
 &lt;div class=&quot;row header&quot;&gt;&lt;div class=&quot;cell&quot;&gt;Markdown&lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;Result&lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt;
@@ -2033,11 +2033,11 @@ line breaks&lt;/p&gt;
 &lt;p&gt;Super&lt;sup&gt;script&lt;/sup&gt;&lt;/p&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;h2 id=&quot;links-and-images&quot; tabindex=&quot;-1&quot;&gt;Links and Images &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://aogriffiths.github.io/eleventy-base-blog/url&quot;&gt;A link&lt;/a&gt;
-&lt;img src=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/icon.png&quot; alt=&quot;An Image&quot;&gt;
-&lt;a href=&quot;https://aogriffiths.github.io/eleventy-base-blog/url&quot;&gt;&lt;img src=&quot;https://aogriffiths.github.io/eleventy-base-blog/url&quot; alt=&quot;A linked image&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;code&quot; tabindex=&quot;-1&quot;&gt;Code &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;links-and-images&quot; tabindex=&quot;-1&quot;&gt;Links and Images &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://aogriffiths.github.io/do/url&quot;&gt;A link&lt;/a&gt;
+&lt;img src=&quot;https://aogriffiths.github.io/do/blog/markdown/icon.png&quot; alt=&quot;An Image&quot;&gt;
+&lt;a href=&quot;https://aogriffiths.github.io/do/url&quot;&gt;&lt;img src=&quot;https://aogriffiths.github.io/do/url&quot; alt=&quot;A linked image&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;code&quot; tabindex=&quot;-1&quot;&gt;Code &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class=&quot;table&quot;&gt;
 &lt;div class=&quot;row header&quot;&gt;&lt;div class=&quot;cell&quot;&gt;Markdown&lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;Result&lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt;
@@ -2061,7 +2061,7 @@ line breaks&lt;/p&gt;
 &lt;pre class=&quot;language-markdown&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token code&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;```&lt;/span&gt;&lt;span class=&quot;token code-language&quot;&gt;sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;token code-block language-sh&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# fenced escaped&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;token punctuation&quot;&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;h2 id=&quot;tables&quot; tabindex=&quot;-1&quot;&gt;Tables &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;tables&quot; tabindex=&quot;-1&quot;&gt;Tables &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class=&quot;table&quot;&gt;
 &lt;div class=&quot;row header&quot;&gt;&lt;div class=&quot;cell&quot;&gt;Markdown&lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;Result&lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt;
@@ -2108,14 +2108,14 @@ line breaks&lt;/p&gt;
 &lt;/table&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;h3 id=&quot;notes-2&quot; tabindex=&quot;-1&quot;&gt;Notes &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;notes-2&quot; tabindex=&quot;-1&quot;&gt;Notes &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;For markdown to span multiple lines inside a cell use a html &lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt; with both &lt;code&gt;&amp;lt;td markdown=&amp;quot;1&amp;quot;&amp;gt;&lt;/code&gt; and blank lines as shown.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
 &lt;p&gt;ℹ️ &lt;strong&gt;Info:&lt;/strong&gt; &lt;code&gt;&amp;lt;td markdown=&amp;quot;1&amp;quot;&amp;gt;&lt;/code&gt; is required by jekyll flavoured markdown, the blank line is required by github flavoured markdown.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;comments&quot; tabindex=&quot;-1&quot;&gt;Comments &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;comments&quot; tabindex=&quot;-1&quot;&gt;Comments &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class=&quot;table&quot;&gt;
 &lt;div class=&quot;row header&quot;&gt;&lt;div class=&quot;cell&quot;&gt;Markdown&lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;Result&lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt; 
@@ -2130,7 +2130,7 @@ C
 &lt;p&gt;C&lt;/p&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;h2 id=&quot;blockquotes&quot; tabindex=&quot;-1&quot;&gt;Blockquotes &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;blockquotes&quot; tabindex=&quot;-1&quot;&gt;Blockquotes &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;div class=&quot;table&quot;&gt;
 &lt;div class=&quot;row header&quot;&gt;&lt;div class=&quot;cell&quot;&gt;Markdown&lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;Result&lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;cell&quot;&gt; 
@@ -2176,7 +2176,7 @@ C
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;
 &lt;blockquote&gt;
-&lt;h2 id=&quot;markdown&quot; tabindex=&quot;-1&quot;&gt;Markdown &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;markdown&quot; tabindex=&quot;-1&quot;&gt;Markdown &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;in a&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;&lt;strong&gt;quote&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
@@ -2184,7 +2184,7 @@ C
 &lt;/blockquote&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;h2 id=&quot;alerts&quot; tabindex=&quot;-1&quot;&gt;Alerts &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;alerts&quot; tabindex=&quot;-1&quot;&gt;Alerts &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/markdown/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Achieved using blockquotes and emojis.&lt;/p&gt;
 &lt;div class=&quot;table&quot;&gt;
 &lt;div class=&quot;row header&quot;&gt;&lt;div class=&quot;cell&quot;&gt;Markdown&lt;/div&gt;&lt;div class=&quot;cell&quot;&gt;Result&lt;/div&gt;&lt;/div&gt;

@@ -2,107 +2,107 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/markdown/</loc>
+		<loc>https://aogriffiths.github.io/do/blog/markdown/</loc>
 		<lastmod>2023-01-30</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/yaml/</loc>
+		<loc>https://aogriffiths.github.io/do/blog/yaml/</loc>
 		<lastmod>2023-01-30</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/mysticrose/</loc>
+		<loc>https://aogriffiths.github.io/do/blog/mysticrose/</loc>
 		<lastmod>2023-03-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/mysticrose/rainbow/</loc>
+		<loc>https://aogriffiths.github.io/do/blog/mysticrose/rainbow/</loc>
 		<lastmod>2023-03-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/debian_on_rock_4_se/</loc>
+		<loc>https://aogriffiths.github.io/do/blog/rock-4/debian_on_rock_4_se/</loc>
 		<lastmod>2023-03-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/ha_on_rock_4_se/</loc>
+		<loc>https://aogriffiths.github.io/do/blog/rock-4/ha_on_rock_4_se/</loc>
 		<lastmod>2023-03-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/harocks/</loc>
+		<loc>https://aogriffiths.github.io/do/blog/rock-4/harocks/</loc>
 		<lastmod>2023-03-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_2_deb_build/</loc>
+		<loc>https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_2_deb_build/</loc>
 		<lastmod>2023-03-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_3_rbuild/</loc>
+		<loc>https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_3_rbuild/</loc>
 		<lastmod>2023-03-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/custom_vagrant_box/</loc>
+		<loc>https://aogriffiths.github.io/do/blog/custom_vagrant_box/</loc>
 		<lastmod>2023-04-20</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/about/</loc>
-		<lastmod>2023-04-22</lastmod>
+		<loc>https://aogriffiths.github.io/do/about/</loc>
+		<lastmod>2023-04-23</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/</loc>
-		<lastmod>2023-04-22</lastmod>
+		<loc>https://aogriffiths.github.io/do/blog/</loc>
+		<lastmod>2023-04-23</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/qemu/</loc>
-		<lastmod>2023-04-22</lastmod>
+		<loc>https://aogriffiths.github.io/do/blog/qemu/</loc>
+		<lastmod>2023-04-23</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/video/</loc>
-		<lastmod>2023-04-22</lastmod>
+		<loc>https://aogriffiths.github.io/do/blog/rock-4/video/</loc>
+		<lastmod>2023-04-23</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/</loc>
-		<lastmod>2023-04-22</lastmod>
+		<loc>https://aogriffiths.github.io/do/</loc>
+		<lastmod>2023-04-23</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/tags/</loc>
-		<lastmod>2023-04-22</lastmod>
+		<loc>https://aogriffiths.github.io/do/tags/</loc>
+		<lastmod>2023-04-23</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/tags/guides/</loc>
-		<lastmod>2023-04-22</lastmod>
+		<loc>https://aogriffiths.github.io/do/tags/guides/</loc>
+		<lastmod>2023-04-23</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/tags/maths/</loc>
-		<lastmod>2023-04-22</lastmod>
+		<loc>https://aogriffiths.github.io/do/tags/maths/</loc>
+		<lastmod>2023-04-23</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/tags/rock/</loc>
-		<lastmod>2023-04-22</lastmod>
+		<loc>https://aogriffiths.github.io/do/tags/rock/</loc>
+		<lastmod>2023-04-23</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/arm_build/</loc>
+		<loc>https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_1_bsp/arm_build/</loc>
 		<lastmod>2023-04-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://aogriffiths.github.io/eleventy-base-blog/blog/rock-4/rock4se_build_1_bsp/</loc>
+		<loc>https://aogriffiths.github.io/do/blog/rock-4/rock4se_build_1_bsp/</loc>
 		<lastmod>2023-04-25</lastmod>
 	</url>
 </urlset>
