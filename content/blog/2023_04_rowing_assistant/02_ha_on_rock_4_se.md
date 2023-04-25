@@ -1,8 +1,8 @@
 ---
-title: Home Assistant on Debian on Rock 4 SE
+title: Rowing Assistant - Home Assistant on a Rock 4 SE
 description: Installing Home Assistant on Debian on Rock 4 SE
-date: 2023-03-25
-tags: rock
+date: 2023-04-26
+tags: rowing assistant
 ---
 
 # Home Assistant on Debian on Rock 4 SE

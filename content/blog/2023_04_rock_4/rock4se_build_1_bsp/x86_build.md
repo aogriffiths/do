@@ -1,7 +1,7 @@
 ---
-title: Rock4 SE custom OS, the old way
+title: Rock 4 SE build v1_x86 (using rockchip-bsp)
 description: Building a custom kernal, u-boot and Debian from source for the Rock 4 SE, the old rockchip-bsp way
-date: 2023-04-25
+date: 2023-04-20
 tags: rock
 ---
 

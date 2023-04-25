@@ -1,3 +1,10 @@
+---
+title: Rowing Assistant - Animation for a neopixel display
+description: Creating and animated gif from a video, for a neopixel display
+date: 2023-04-27
+tags: rowing assistant
+---
+
 Coxles four
 https://www.youtube.com/watch?v=r7Qe3e2rb0U
 

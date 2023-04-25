@@ -1,17 +1,16 @@
 ---
-title: Home Assistant Rocks!
-description: Home Assistant and the Rocks Pi, together
-date: 2023-03-25
-tags: rock
+title: Rowing Assistant - Introduction
+description: Creating a Home Assistant instance for Maidenhead Rowing Club 
+date: 2023-04-25
+tags: rowing assistant
 ---
 
 
+Home Assistant is a fantastic way to bring all your smart devices together in to one smart home. With very little effort you get a slick UI, companion app, remote access (courtesy of Nubu Casa), user configurable automations and much more. But it’s not limited to your home.
 
-Home Assistant is a fantastic way to bring all your smart devices together in to one smart home. With very little effort you get a slick UI, companion app, remote access (courtesy of Nubu Casa), user configurable automations and much more. But it’s not limited to just that.
+This series of posts will show you how to do a few things beyond the basics, like:
 
-This article will show you how to do a few things beyond the basics, like 
-
-- Bespoke Sensors - creating them using esphome
+- Bespoke Sensors - using esphome
 - Outdoors - measuring (and withstanding) the elements.
 - Long wires - hard wiring to places wifi and power won’t reach.
 - Public APIs - getting data from a source which Home Assistant doesn’t support (yet)
@@ -20,7 +19,11 @@ This article will show you how to do a few things beyond the basics, like
 - Outdoor display - use RGB leds to create outdoor indicators or digital signage
 
 
-It’s intended for makers, inventors, and anyone interested doing more than out of the box stuff. It’s a long article, including code, configuration, hardware assembly and more hands on soldering and making. You can read it all or just pick the bits of interest to you.
+It’s intended for makers, inventors, or anyone interested doing more than the out of the box stuff. There's lots of notes, including code, configuration, hardware assembly and more hands on soldering and making. You can read it all or just pick the bits of interest to you.
+
+[All Posts](/tags/rowing-assistant/)
+[Next Posts](/tags/rowing-assistant/)
+
 
 The example its based on is monitoring weather conditions for a rowing club, however you could easily adapt it for many other other outdoor or indoor, sport or non-sport examples.
 

@@ -1,4 +1,5 @@
 const { nbconvert } = require('./_lib/nbconvert.js');
+//DEBUG='Eleventy* nbconvert*' npx @11ty/eleventy --serve --quiet
 const debug = require("debug")("nbconvert:config");
 const parse5 = require('parse5');
 const fs = require('fs').promises;
@@ -27,7 +28,7 @@ module.exports = eleventyConfig => {
       const output = await nbconvert(inputPath)
       const document = parse5.parse(output)
 
-      debug(`Step A: $document`, document)
+      debug(`Step A1: $document`, document)
 //      let [head,body] = output.split('</head>')
 //      head.replace('<head>','')
 //      head.replace('/\<meta[^>]*\>/g','')
@@ -41,16 +42,17 @@ module.exports = eleventyConfig => {
       let body = '<div>no body found</div>'
       
       for (node of document.childNodes){
-        debug(`Step A: node`, node.tagName )
+        debug(`Step A2: node`, node.tagName )
         if(node.tagName === 'html'){
           for (node2 of node.childNodes){
-            debug(`Step A: node3`, node2.tagName )
+            debug(`Step A3: node3`, node2.tagName )
             if(node2.tagName === 'head'){
               node2.childNodes = node2.childNodes.filter(node3 => node3.tagName === 'script' || node3.tagName === 'style'); 
               head=parse5.serialize(node2);
             }
             if(node2.tagName === 'body'){
               body=parse5.serialize(node2);
+              debug(`Step A4 body:`, body )
             }
           }
         }

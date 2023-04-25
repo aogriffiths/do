@@ -1,13 +1,13 @@
 ---
 title: Opinionated Markdown Guide
 description: A cheat sheet, collection of hacks and style guide for markdown.
-date: 2023-01-30
+date: 2023-01-25
 tags: guides
 ---
 
-Markdown is simple, effective way to document your stuff. From README's and project docs to making a blog markdown can do the trick.
+Markdown is easy and effective way to document your stuff. From README's and project docs to making a blog, like this one, markdown can do the trick.
 
-Here's a cheat sheet, collection of hacks and style guide. It is intended to work with github (github formatted markdown) and jekyll (often used for github pages). although there is more than one way to do things with markdown, this guide doesn't get in to that, it offers one way. This makes it quick to follow, consistent an opinionated markdown guide (you can call it the OMG if you want).
+Here's a cheat sheet, collection of hacks and style guide. It is intended to work with github (github formatted markdown) and 11ty (a static site generator). although there is more than one way to do things with markdown, this guide doesn't get in to that, it describes just one way. This makes it quick to follow, consistent an opinionated markdown guide.
 
 Headings
 --------
@@ -242,33 +242,33 @@ Lists
 <div class="row"><div class="cell">
 
 ````markdown
-1. First
-     - with child
+1. With...
+     - a list
      - 1970\. escaped number + dot
 
-2. With
+2. With...
    
-   paragraph
+   a paragraph
 
-3. With
+3. With...
    ```javascript
-   console.log('fenced code block');
+   console.log('javascript');
    ```
 ````
 
 </div><div class="cell">
 
-1. First
-     - with child
+1. With...
+     - a list
      - 1970\. escaped number + dot
 
-2. With
+2. With...
    
-   paragraph
+   a paragraph
 
-3. With
+3. With...
    ```javascript
-   console.log('fenced code block');
+   console.log('javascript');
    ```
 
 </div></div>
@@ -281,11 +281,11 @@ Lists
  
 1. Bullet using `-`
 
-2. Number using `0.`
+2. Number using `0.` and escape the `.` with `\.` if you need
 
 3. Indent sublists with four spaces
 
-4. Indent any other contnet with 2 spaces
+4. Indent any other content with 2 spaces
 
 
 
@@ -372,9 +372,12 @@ Super<sup>script</sup>
 Links and Images
 ----------------
 
-[A link](/url)
-![An Image](icon.png)
-[![A linked image](/url)](/url)
+[A Link](#link1)
+
+An image: ![An image](icon.png)
+
+A linked image: [![Link 2](icon.png)](#link2)
+
 
 Code
 ----
@@ -511,9 +514,9 @@ Row1
 
 ### Notes
  
-1. For markdown to span multiple lines inside a cell use a html `<table>` with both `<td markdown="1">` and blank lines as shown.
+1. For markdown to span multiple lines inside a cell use an html `<table>` with both `<td markdown="1">` and blank lines as shown.
 
-> ℹ️ **Info:** `<td markdown="1">` is required by jekyll flavoured markdown, the blank line is required by github flavoured markdown.
+> ℹ️ **Info:** `<td markdown="1">` is required by jekyll flavoured markdown, the blank line is required by github flavoured markdown and keeping both as a standard is helpful for compatibility even if you're using other flavours.
 
 
 Comments
@@ -524,7 +527,7 @@ Comments
 <div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
 <div class="row"><div class="cell"> 
 
-```
+```markdown
 A
 
 [nothing to see here]: # 
@@ -654,12 +657,8 @@ Achieved using blockquotes and emojis.
 </div>
 
 
-> **Note**
-> This is a note
-
-
-> **Warning**
-> This is a warning
+Template used for this guide
+----------------------------
 
 
 <div class="table">
@@ -677,24 +676,6 @@ a
 
 </div></div>
 </div>
-
-
-
-<table class="table">
-<th class="row header"><td class="cell">Markdown</td><td class="cell">Result</td></th>
-
-<tr class="row"><td class="cell">
-    
-```
-b
-```
-
-</td><td class="cell">
-    
-b
-
-</td></tr>
-</table>
 
 
 <style>

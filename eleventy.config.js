@@ -23,6 +23,9 @@ module.exports = function(eleventyConfig) {
 	// Watch content images for the image pipeline.
 	eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
 
+	// ignore Jupyter Lab Checkpoints 
+	eleventyConfig.ignores.add("**/.ipynb_checkpoints/**");
+
 	// App plugins
 	eleventyConfig.addPlugin(require("./eleventy.config.drafts.js"));
 	eleventyConfig.addPlugin(require("./eleventy.config.images.js"));

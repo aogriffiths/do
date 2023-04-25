@@ -1,16 +1,11 @@
 ---
-title: Rock4 SE custom OS, the old way + arm
+title: Rock 4 SE build v1_arm (using rockchip-bsp)
 description: Building a custom kernal, u-boot and Debian from source for the Rock 4 SE, the old rockchip-bsp way and attempting to do it on arm without cross compiling
-date: 2023-04-25
+date: 2023-04-21
 tags: rock
 ---
 
-THESE INSTRUCTIONS DO NOT WORK. They go a long way to working and are shared her ein case it's ever interesting to anyone.
-
-
-The official Rock 4 SE Debian 11 (Buster) image does not have AppArmor enabled, which Home Assistant requires. To create a custom image we will use the [Radxa Board Support Package](https://github.com/radxa/rockchip-bsp) (BSP).
-
-Take the following steps on machine of your choice, they should be  adaptable to work on a Windows, Mac or Linux machine, but have only been tested on an intel Mac.
+THESE INSTRUCTIONS DO NOT WORK. They go some way to adapting the Rock SE build instructions for running on an arm machine, but they are not fully working and are shared here in case it's ever interesting to anyone.
 
 Steps
 ----------

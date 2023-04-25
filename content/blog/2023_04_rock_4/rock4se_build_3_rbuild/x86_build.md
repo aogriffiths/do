@@ -1,7 +1,7 @@
 ---
-title: Rock4 SE Debian Build
+title: Rock4 SE build v3 (using rbuild)
 description: Building Debian from source for the Rock 4 SE
-date: 2023-03-25
+date: 2023-04-23
 tags: rock
 ---
 
