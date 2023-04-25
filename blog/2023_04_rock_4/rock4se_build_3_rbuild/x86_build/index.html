@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Do</title>
-		<meta name="description" content="Writing about things I do">
+		<title>Rock4 SE build v3 (using rbuild)</title>
+		<meta name="description" content="Building Debian from source for the Rock 4 SE">
 		<link rel="alternate" href="/do/feed/feed.xml" type="application/atom+xml" title="Do">
 		<link rel="alternate" href="/do/feed/feed.json" type="application/json" title="Do">
 		
@@ -467,50 +467,100 @@ h2 + .header-anchor {
 
 		<main id="skip">
 			
-<h1></h1>
+<h1>Rock4 SE build v3 (using rbuild)</h1>
 
 <ul class="post-metadata">
 	<li><time datetime="2023-04-23">23 April 2023</time></li>
+	<li><a href="/do/tags/rock/" class="post-tag">rock</a></li>
 </ul>
 
+<p>The build of the system image is done using
+<a href="https://github.com/radxa-build/rock-4se/blob/main/.github/workflows/build.yml">radxa-build/rock-4se</a> and
+<a href="https://github.com/radxa-repo/rbuild">radxa-repo/rbuild</a> using docker.</p>
+<h1 id="vagrant-method" tabindex="-1">Vagrant Method <a class="header-anchor" href="#vagrant-method">#</a></h1>
 <ol>
 <li>
-<p>install and test</p>
-<pre class="language-bash" tabindex="0"><code class="language-bash">brew <span class="token function">install</span> qemu<br>qemu-system-x86_64 <span class="token parameter variable">--version</span></code></pre>
-</li>
-<li>
-<p>create avistaul disk</p>
-<pre><code>mkdir -p ~/vm_debian/
-qemu-img create -f qcow2 ~/vm_debian/disk.qcow2 40G
+<p>Install vagrant</p>
+<pre><code>brew install hashicorp/tap/hashicorp-vagrant
 </code></pre>
 </li>
 <li>
-<p>Download ISO</p>
-<pre><code>weget ../debian-11.6.0-amd64-netinst.iso
+<p>Instal VMWare Fusion Player</p>
+<p>It took me a while to do this. Could use virtualbox as an alternative but virtualbox support for Apple Silicon is still beta. Look at the official vagrant documentation, which indicates better support for VMware, also also <a href="https://medium.com/geekculture/setting-up-vagrant-2-3-0-for-virtual-machine-management-in-mac-apple-m1-pro-9dc4ec9036db">here</a></p>
+<ul>
+<li>Download and install <a href="https://www.vmware.com/uk/products/fusion/fusion-evaluation.html">Fusion 13 Player for macOS 12+</a> from VMWare</li>
+<li>Download and install Vagrant vmware Utility from Vagrant</li>
+<li><code>vagrant plugin install vagrant-vmware-desktop</code></li>
+</ul>
+</li>
+<li>
+<p>Create a debos docker image, with some customisations</p>
+</li>
+</ol>
+<p>This will allow you to get a bash shell with a builduser later on.</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">docker</span> build <span class="token parameter variable">-t</span> rbuild:6 <span class="token builtin class-name">.</span></code></pre>
+<ol start="3">
+<li>Open a bash shell using the image and volume</li>
+</ol>
+<pre><code>docker run --rm -it -v &quot;$(pwd)&quot;:/root/host --mount source=rock-4se-rbuild,target=/home/builduser/rock-4se-rbuild --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --security-opt label=disable --entrypoint=/bin/bash rbuild:6
+</code></pre>
+<ol start="4">
+<li>Clone the rbuild source
+Inside the docker container run:</li>
+</ol>
+<pre><code>git clone https://github.com/radxa-repo/rbuild ./
+</code></pre>
+<ol start="5">
+<li>build the OS image</li>
+</ol>
+<pre><code>./rbuild
+</code></pre>
+<h1 id="docker-method-not-working" tabindex="-1">Docker Method (Not Working) <a class="header-anchor" href="#docker-method-not-working">#</a></h1>
+<p>This method does not work, yet, but it's included here in case it can be made to work at some stage.</p>
+<ol>
+<li>
+<p>Create Docker Volume</p>
+<pre><code>docker volume create rock-4se-rbuild
 </code></pre>
 </li>
 <li>
-<p>Run a VM</p>
-<pre><code>qemu-system-x86_64 \
--m 4G \
--vga virtio \
--display default,show-cursor=on \
--machine type=q35 \
--smp 2 \
--cdrom ~/Downloads/debian-11.6.0-amd64-netinst.iso \
--drive file=disk.qcow2,if=virtio \
--cpu qemu64
+<p>Create a debos docker image, with some customisations</p>
+<p>This will allow you to get a bash shell with a builduser later on.</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">docker</span> build <span class="token parameter variable">-t</span> rbuild:6 <span class="token builtin class-name">.</span></code></pre>
+</li>
+<li>
+<p>Open a bash shell using the image and volume</p>
+<pre><code>docker run --rm -it -v &quot;$(pwd)&quot;:/root/host --mount source=rock-4se-rbuild,target=/home/builduser/rock-4se-rbuild --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --security-opt label=disable --entrypoint=/bin/bash rbuild:6
+</code></pre>
+</li>
+<li>
+<p>Clone the rbuild source</p>
+<p>Inside the docker container run:</p>
+<pre><code>git clone https://github.com/radxa-repo/rbuild ./
+</code></pre>
+</li>
+<li>
+<p>Build the OS image</p>
+<pre><code>./rbuild
 </code></pre>
 </li>
 </ol>
+<hr>
+<ol>
+<li><code>brew install ansible</code></li>
+</ol>
+<p>referecnes:</p>
+<p>https://radxa-repo.github.io/bsp/</p>
 
-<ul class="links-nextprev"><li>Previous: <a href="/do/blog/custom_vagrant_box/">Custom Vagrant Box</a></li><li>Next: <a href="/do/blog/rock-4/video/"></a></li>
+<ul class="links-nextprev"><li>Previous: <a href="/do/blog/2023_04_rock_4/rock4se_build_2/x86_build/">Rock4 SE build v2 (using debos-radxa)</a></li><li>Next: <a href="/do/blog/2023_04_rowing_assistant/01_introdution/">Rowing Assistant - Introduction</a></li>
 </ul>
 
 		</main>
 
-		<footer></footer>
+		<footer>
+			  <a href="https://github.com/aogriffiths/do/tree/main/content/blog/2023_04_rock_4/rock4se_build_3_rbuild/x86_build.md">source on GitHub</a>
+		</footer>
 
-		<!-- Current page: /do/blog/qemu/ -->
+		<!-- Current page: /do/blog/2023_04_rock_4/rock4se_build_3_rbuild/x86_build/ -->
 	</body>
 </html>

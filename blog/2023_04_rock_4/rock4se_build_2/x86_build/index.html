@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Custom Vagrant Box</title>
-		<meta name="description" content="Custom Vagrant Box">
+		<title>Rock4 SE build v2 (using debos-radxa)</title>
+		<meta name="description" content="Building Debian from source for the Rick 4 SE">
 		<link rel="alternate" href="/do/feed/feed.xml" type="application/atom+xml" title="Do">
 		<link rel="alternate" href="/do/feed/feed.json" type="application/json" title="Do">
 		
@@ -467,102 +467,75 @@ h2 + .header-anchor {
 
 		<main id="skip">
 			
-<h1>Custom Vagrant Box</h1>
+<h1>Rock4 SE build v2 (using debos-radxa)</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2023-04-20">20 April 2023</time></li>
+	<li><time datetime="2023-04-22">22 April 2023</time></li>
+	<li><a href="/do/tags/rock/" class="post-tag">rock</a></li>
 </ul>
 
-<p>Here's how to create a custom vagrant box for Debian Arm 64. The process is similar for any OX, any architecture.</p>
+<p>The build of the system image is done using the <a href="https://github.com/radxa/debos-radxa.git">debos-radxa</a>.</p>
+<p>WARNING These instructions are incomplete and untested. <a href="https://github.com/radxa/debos-radxa.git">debos-radxa</a> is being replaced by <a href="https://github.com/radxa-repo/rbuild">rbuild</a>.</p>
+<p>It includes a bespoke Dockerfile to create a build environment but instructions in the README use the standard debos docker image <code>godebos/debos</code>. The README also takes the approach of keeping the source on the parent machine and bind mounting it to the docker container. This works on linux machines but can run in to issue son Mac or Windows, so we take a different aproach here.</p>
+<h1 id="dry-run" tabindex="-1">Dry Run <a class="header-anchor" href="#dry-run">#</a></h1>
+<p>To build a standard image take the following steps:</p>
 <ol>
-<li>Install VMware</li>
-<li>Create a VM (e.g. &quot;Debian 11.x 64-bit Arm Box&quot;)</li>
-<li>Install Debian (e.g. arm64 variant)
-<ul>
-<li>Create user/password root/vagrant and vagrant/vagrant</li>
-<li>Set up passwordless sudo for the vagrant user</li>
-</ul>
-</li>
-<li>Install the SSH certs<pre><code>https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub 
-~/.ssh/authorized_keys
-``
-</code></pre>
-</li>
-<li>Install VMware Tools (build from source for arm64)</li>
-<li>Speed up grub<pre><code>sudo nano /etc/default/grub
-# change GRUB_TIMEOUT=0
-sudo update-grub
-</code></pre>
-</li>
-<li>Clean the image, remove any unneeded files and packages from the build process</li>
-<li>Shut down the VM</li>
-<li>Change the VM Network settings to Bridged Networking / Autodetect to ensure it has a ip address and is accessible from the host for ssh access.</li>
-<li>Check it runs with <code>vmrun -T fusion start vm_name.vmx</code></li>
-<li>Shutdown again</li>
-<li>Compress the disks<pre><code>/Applications/VMware\ Fusion.app/Contents/Library/vmware-vdiskmanager -d Virtual\ Disk.vmdk
-/Applications/VMware\ Fusion.app/Contents/Library/vmware-vdiskmanager -k Virtual\ Disk.vmdk
-</code></pre>
-</li>
-<li>Disable scoreboards<pre><code>echo vmx.scoreboard.enabled = \&quot;FALSE\&quot; &gt;&gt; *.vmx
-</code></pre>
-</li>
-<li>Delete logs and lock files<pre><code>rm *.log
-rm *.scoreboard
-rm -rf *.vmx.lck
-</code></pre>
-</li>
-<li>Create box meta data</li>
+<li>Create a docker volume for the source</li>
 </ol>
-<pre><code>cat &lt;&lt;EOF &gt;./metadata.json
-{
-&quot;provider&quot;: &quot;vmware_desktop&quot;
-}
-EOF   
+<pre><code>docker volume create debos-radxa
 </code></pre>
-<ol start="10">
-<li>
-<p>tar the box file</p>
-<pre><code>tar -C ~/Virtual\ Machines.localized/Debian\ 11.x\ 64-bit\ Arm\ Box.vmwarevm -cvzf debain_arm64.box .
-</code></pre>
-</li>
-<li>
-<p>Add the box to Vagrant</p>
-</li>
+<ol start="2">
+<li>Start a docker container, using this volume</li>
 </ol>
-<pre><code>vagrant box add debain_arm64_box debain_arm64.box
+<pre><code>docker run --rm -it -v &quot;$(pwd)&quot;:/root/host --mount source=debos-radxa,target=/root/debos-radxa --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --security-opt label=disable --entrypoint=/bin/bash godebos/debos
 </code></pre>
-<p>if you are updating you can run this first to be sure:</p>
-<pre><code>vagrant box remove debain_arm64_box
-vagrant box list
-</code></pre>
-<ol start="12">
-<li>Check</li>
+<p>docker run --rm --interactive --tty --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --user $(id -u) --security-opt label=disable <br>
+--workdir $PWD --mount &quot;type=bind,source=$PWD,destination=$PWD&quot; --entrypoint ./build-os.sh godebos/debos
+TOP DIR = /build/stephen/debos-radxa</p>
+<ol start="3">
+<li>Clone the source
+Inside the docker containe run:</li>
 </ol>
-<pre><code>cd ..
-mkdir test_box
-cd test_box
-vagrant init debain_arm64_box
+<pre><code>cd /root/debos-radxa 
+git clone https://github.com/radxa/debos-radxa.git ./
 </code></pre>
-<p>then add to the Vagrantfile:</p>
-<pre><code>config.vm.box = &quot;debain_arm64_box&quot; # after this line
-config.vm.provider 'vmware_fusion' do |p|
-  p.linked_clone = false
-end
-config.vm.provider 'vmware_desktop' do |p|
-  p.linked_clone = false
-end
+<ol start="4">
+<li>build the OS image</li>
+</ol>
+<pre><code>./build-os.sh -b rockpi-4b -m debian -v xfce4
 </code></pre>
-<p>then</p>
-<pre><code>vagrant up
+<p>This uses pre-built images for u-boot, the kernal, which are all kept in deb packages under <code>/rootfs/packages/arm64/...</code>. The output of the build can be found in the <code>./output/</code> directory.</p>
+<ol start="5">
+<li>To use it</li>
+</ol>
+<pre><code>cp output/rockpi-4b-debian-bullseye-xfce4-arm64-*.img.xz /root/host/
+exit
 </code></pre>
+<p>Then burn this image to an SD card and boot it up.</p>
+<h1 id="change-the-kernal" tabindex="-1">Change the Kernal <a class="header-anchor" href="#change-the-kernal">#</a></h1>
+<p>Run the following:</p>
+<pre><code>dpkg -I ./rootfs/packages/arm64/kernel/linux-4.4-rock-pi-4-latest_4.4.154-116-rockchip_all.deb
+</code></pre>
+<p>You will see:</p>
+<pre><code>Homepage: https://github.com/radxa/kernel
+</code></pre>
+<p>So this is the project to use to rebuild the kernal, howevber, there is a board suport package which references https://github.com/radxa/kernel, and makes it easier. This can be found at https://github.com/radxa/rockchip-bsp.</p>
+<p>To use ths followig separate intections TODO.</p>
+<p>Follow all the stesp up until <strong>Build the kernal</strong>. There is no need to complete any of the othe steps becuase you will come back to debos-radxa to complile the rest of the OS in to a single image.</p>
+<pre><code>cp /root/host/rockchip-bsp/*.deb ./rootfs/packages/arm64/kernel/
+</code></pre>
+<p>rockpi-4b-debian-bullseye-xfce4-arm64-20221109-1447-gpt.img.xz
+rockpi-4b-debian-bullseye-xfce4-arm64-20230209-0645-gpt.img.xz</p>
 
-<ul class="links-nextprev"><li>Previous: <a href="/do/blog/rock-4/rock4se_build_3_rbuild/">Rock4 SE Debian Build</a></li><li>Next: <a href="/do/blog/qemu/"></a></li>
+<ul class="links-nextprev"><li>Previous: <a href="/do/blog/2023_04_rock_4/rock4se_build_1_bsp/arm_build/">Rock 4 SE build v1_arm (using rockchip-bsp)</a></li><li>Next: <a href="/do/blog/2023_04_rock_4/rock4se_build_3_rbuild/x86_build/">Rock4 SE build v3 (using rbuild)</a></li>
 </ul>
 
 		</main>
 
-		<footer></footer>
+		<footer>
+			  <a href="https://github.com/aogriffiths/do/tree/main/content/blog/2023_04_rock_4/rock4se_build_2/x86_build.md">source on GitHub</a>
+		</footer>
 
-		<!-- Current page: /do/blog/custom_vagrant_box/ -->
+		<!-- Current page: /do/blog/2023_04_rock_4/rock4se_build_2/x86_build/ -->
 	</body>
 </html>

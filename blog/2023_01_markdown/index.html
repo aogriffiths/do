@@ -470,12 +470,12 @@ h2 + .header-anchor {
 <h1>Opinionated Markdown Guide</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2023-01-30">30 January 2023</time></li>
+	<li><time datetime="2023-01-25">25 January 2023</time></li>
 	<li><a href="/do/tags/guides/" class="post-tag">guides</a></li>
 </ul>
 
-<p>Markdown is simple, effective way to document your stuff. From README's and project docs to making a blog markdown can do the trick.</p>
-<p>Here's a cheat sheet, collection of hacks and style guide. It is intended to work with github (github formatted markdown) and jekyll (often used for github pages). although there is more than one way to do things with markdown, this guide doesn't get in to that, it offers one way. This makes it quick to follow, consistent an opinionated markdown guide (you can call it the OMG if you want).</p>
+<p>Markdown is easy and effective way to document your stuff. From README's and project docs to making a blog, like this one, markdown can do the trick.</p>
+<p>Here's a cheat sheet, collection of hacks and style guide. It is intended to work with github (github formatted markdown) and 11ty (a static site generator). although there is more than one way to do things with markdown, this guide doesn't get in to that, it describes just one way. This makes it quick to follow, consistent an opinionated markdown guide.</p>
 <h2 id="headings" tabindex="-1">Headings <a class="header-anchor" href="#headings">#</a></h2>
 <div class="table">
 <div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
@@ -595,23 +595,23 @@ line breaks</p>
 </ul>
 </div></div>
 <div class="row"><div class="cell">
-<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token list punctuation">1.</span> First<br>     <span class="token list punctuation">-</span> with child<br>     <span class="token list punctuation">-</span> 1970\. escaped number + dot<br><br><span class="token list punctuation">2.</span> With<br>   <br>   paragraph<br><br><span class="token list punctuation">3.</span> With<br>   ```javascript<br>   console.log('fenced code block');<br>   ```</code></pre>
+<pre class="language-markdown" tabindex="0"><code class="language-markdown"><span class="token list punctuation">1.</span> With...<br>     <span class="token list punctuation">-</span> a list<br>     <span class="token list punctuation">-</span> 1970\. escaped number + dot<br><br><span class="token list punctuation">2.</span> With...<br>   <br>   a paragraph<br><br><span class="token list punctuation">3.</span> With...<br>   ```javascript<br>   console.log('javascript');<br>   ```</code></pre>
 </div><div class="cell">
 <ol>
 <li>
-<p>First</p>
+<p>With...</p>
 <ul>
-<li>with child</li>
+<li>a list</li>
 <li>1970. escaped number + dot</li>
 </ul>
 </li>
 <li>
-<p>With</p>
-<p>paragraph</p>
+<p>With...</p>
+<p>a paragraph</p>
 </li>
 <li>
-<p>With</p>
-<pre class="language-javascript" tabindex="0"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fenced code block'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>With...</p>
+<pre class="language-javascript" tabindex="0"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'javascript'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </li>
 </ol>
 </div></div>
@@ -622,13 +622,13 @@ line breaks</p>
 <p>Bullet using <code>-</code></p>
 </li>
 <li>
-<p>Number using <code>0.</code></p>
+<p>Number using <code>0.</code> and escape the <code>.</code> with <code>\.</code> if you need</p>
 </li>
 <li>
 <p>Indent sublists with four spaces</p>
 </li>
 <li>
-<p>Indent any other contnet with 2 spaces</p>
+<p>Indent any other content with 2 spaces</p>
 </li>
 </ol>
 <h2 id="formatting" tabindex="-1">Formatting <a class="header-anchor" href="#formatting">#</a></h2>
@@ -671,9 +671,9 @@ line breaks</p>
 </div></div>
 </div>
 <h2 id="links-and-images" tabindex="-1">Links and Images <a class="header-anchor" href="#links-and-images">#</a></h2>
-<p><a href="/do/url">A link</a>
-<img src="icon.png" alt="An Image">
-<a href="/do/url"><img src="/do/url" alt="A linked image"></a></p>
+<p><a href="#link1">A Link</a></p>
+<p>An image: <img src="icon.png" alt="An image"></p>
+<p>A linked image: <a href="#link2"><img src="icon.png" alt="Link 2"></a></p>
 <h2 id="code" tabindex="-1">Code <a class="header-anchor" href="#code">#</a></h2>
 <div class="table">
 <div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
@@ -747,21 +747,16 @@ line breaks</p>
 </div>
 <h3 id="notes-2" tabindex="-1">Notes <a class="header-anchor" href="#notes-2">#</a></h3>
 <ol>
-<li>For markdown to span multiple lines inside a cell use a html <code>&lt;table&gt;</code> with both <code>&lt;td markdown=&quot;1&quot;&gt;</code> and blank lines as shown.</li>
+<li>For markdown to span multiple lines inside a cell use an html <code>&lt;table&gt;</code> with both <code>&lt;td markdown=&quot;1&quot;&gt;</code> and blank lines as shown.</li>
 </ol>
 <blockquote>
-<p>ℹ️ <strong>Info:</strong> <code>&lt;td markdown=&quot;1&quot;&gt;</code> is required by jekyll flavoured markdown, the blank line is required by github flavoured markdown.</p>
+<p>ℹ️ <strong>Info:</strong> <code>&lt;td markdown=&quot;1&quot;&gt;</code> is required by jekyll flavoured markdown, the blank line is required by github flavoured markdown and keeping both as a standard is helpful for compatibility even if you're using other flavours.</p>
 </blockquote>
 <h2 id="comments" tabindex="-1">Comments <a class="header-anchor" href="#comments">#</a></h2>
 <div class="table">
 <div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
 <div class="row"><div class="cell"> 
-<pre><code>A
-
-[nothing to see here]: # 
-
-C
-</code></pre>
+<pre class="language-markdown" tabindex="0"><code class="language-markdown">A<br><br><span class="token url-reference url"><span class="token punctuation">[</span><span class="token variable">nothing to see here</span><span class="token punctuation">]</span><span class="token punctuation">:</span> #</span> <br><br>C</code></pre>
 </div><div class="cell">
 <p>A</p>
 <p>C</p>
@@ -854,14 +849,7 @@ C
 </blockquote>
 </div></div>
 </div>
-<blockquote>
-<p><strong>Note</strong>
-This is a note</p>
-</blockquote>
-<blockquote>
-<p><strong>Warning</strong>
-This is a warning</p>
-</blockquote>
+<h2 id="template-used-for-this-guide" tabindex="-1">Template used for this guide <a class="header-anchor" href="#template-used-for-this-guide">#</a></h2>
 <div class="table">
 <div class="row header"><div class="cell">Markdown</div><div class="cell">Result</div></div>
 <div class="row"><div class="cell">
@@ -871,15 +859,6 @@ This is a warning</p>
 <p>a</p>
 </div></div>
 </div>
-<table class="table">
-<th class="row header"></th><td class="cell">Markdown</td><td class="cell">Result</td>
-<tr class="row"><td class="cell">
-<pre><code>b
-</code></pre>
-</td><td class="cell">
-<p>b</p>
-</td></tr>
-</table>
 <style>
 
 .table {
@@ -940,13 +919,15 @@ This is a warning</p>
 }
 </style>
 
-<ul class="links-nextprev"><li>Next: <a href="/do/blog/yaml/">YAML Ain’t Markup Language</a></li>
+<ul class="links-nextprev"><li>Next: <a href="/do/blog/2023_01_yaml/">YAML Ain’t Markup Language</a></li>
 </ul>
 
 		</main>
 
-		<footer></footer>
+		<footer>
+			  <a href="https://github.com/aogriffiths/do/tree/main/content/blog/2023_01_markdown/index.md">source on GitHub</a>
+		</footer>
 
-		<!-- Current page: /do/blog/markdown/ -->
+		<!-- Current page: /do/blog/2023_01_markdown/ -->
 	</body>
 </html>
