@@ -709,11 +709,7 @@ Inside the docker container run:&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;./rbuild&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;brew install ansible&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;referecnes:&lt;/p&gt;
+&lt;h2 id=&quot;references&quot; tabindex=&quot;-1&quot;&gt;References &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/2023_04_rock_4/rock4se_build_3_rbuild/x86_build/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;https://radxa-repo.github.io/bsp/&lt;/p&gt;
 </content>
 	</entry>
@@ -1106,7 +1102,7 @@ ls out/u-boot/
 &lt;p&gt;The final step is to flash &lt;code&gt;system.img&lt;/code&gt; to an SD card. Balena Etcher is a good choice for this.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&quot;references&quot; tabindex=&quot;-1&quot;&gt;References &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/2023_04_rock_4/rock4se_build_1_bsp/x86_build/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h1 id=&quot;references&quot; tabindex=&quot;-1&quot;&gt;References &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/2023_04_rock_4/rock4se_build_1_bsp/x86_build/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;https://wiki.radxa.com/Rock3/dev/Debian&lt;/li&gt;
 &lt;li&gt;https://wiki.radxa.com/Rockpi4/dev/Debian&lt;/li&gt;
