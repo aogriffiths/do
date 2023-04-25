@@ -11,6 +11,7 @@ The build of the system image is done using
 [radxa-repo/rbuild](https://github.com/radxa-repo/rbuild) using docker.
 
 
+WORK IN PROGRESS. THESE INSTRUCTIONS ARE INCOMPLETE AND NOT WORKING.
 
 Vagrant Method 
 ==============
