@@ -474,11 +474,15 @@ h2 + .header-anchor {
 	<li><a href="/do/tags/rock/" class="post-tag">rock</a></li>
 </ul>
 
-<p>The build of the system image is done using
-<a href="https://github.com/radxa-build/rock-4se/blob/main/.github/workflows/build.yml">radxa-build/rock-4se</a> and
-<a href="https://github.com/radxa-repo/rbuild">radxa-repo/rbuild</a> using docker.</p>
-<p>WORK IN PROGRESS. THESE INSTRUCTIONS ARE INCOMPLETE AND NOT WORKING.</p>
-<h1 id="vagrant-method" tabindex="-1">Vagrant Method <a class="header-anchor" href="#vagrant-method">#</a></h1>
+<h3 id="work-in-progress-these-instructions-are-incomplete-and-not-working" tabindex="-1">WORK IN PROGRESS. THESE INSTRUCTIONS ARE INCOMPLETE AND NOT WORKING. <a class="header-anchor" href="#work-in-progress-these-instructions-are-incomplete-and-not-working">#</a></h3>
+<p>The build of the system image is done using</p>
+<ul>
+<li><a href="https://github.com/radxa-build/rock-4se/blob/main/.github/workflows/build.yml">radxa-build/rock-4se</a> and</li>
+<li><a href="https://github.com/radxa-repo/rbuild">radxa-repo/rbuild</a> using docker.</li>
+</ul>
+<p>The official build process uses github workflows, e.g. <a href="https://github.com/radxa-build/rock-4se/blob/main/.github/workflows/build.yml">radxa-build/rock-4se</a> uses actions from <a href="https://github.com/radxa-repo/rbuild">radxa-repo/rbuild</a>. So it should be possible to clone both repositories, customise them and use GitHub to build a custom image.</p>
+<p>However, this page is hopefully going to document how you can build on your local machine.</p>
+<h1 id="vagrant-experiment" tabindex="-1">Vagrant EXPERIMENT <a class="header-anchor" href="#vagrant-experiment">#</a></h1>
 <ol>
 <li>
 <p>Install vagrant</p>
@@ -496,33 +500,32 @@ h2 + .header-anchor {
 </li>
 <li>
 <p>Create a debos docker image, with some customisations</p>
-</li>
-</ol>
 <p>This will allow you to get a bash shell with a builduser later on.</p>
 <pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">docker</span> build <span class="token parameter variable">-t</span> rbuild:6 <span class="token builtin class-name">.</span></code></pre>
-<ol start="3">
-<li>Open a bash shell using the image and volume</li>
+</li>
 </ol>
-<pre><code>docker run --rm -it -v &quot;$(pwd)&quot;:/root/host --mount source=rock-4se-rbuild,target=/home/builduser/rock-4se-rbuild --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --security-opt label=disable --entrypoint=/bin/bash rbuild:6
+<pre><code>
+3. Open a bash shell using the image and volume
+   ```bash
+   docker run --rm -it -v &quot;$(pwd)&quot;:/root/host --mount source=rock-4se-rbuild,target=/home/builduser/rock-4se-rbuild --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --security-opt label=disable --entrypoint=/bin/bash rbuild:6
 </code></pre>
 <ol start="4">
-<li>Clone the rbuild source
-Inside the docker container run:</li>
+<li>
+<p>Clone the rbuild source
+Inside the docker container run:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">git</span> clone https://github.com/radxa-repo/rbuild ./</code></pre>
+</li>
+<li>
+<p>build the OS image</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash">./rbuild</code></pre>
+</li>
 </ol>
-<pre><code>git clone https://github.com/radxa-repo/rbuild ./
-</code></pre>
-<ol start="5">
-<li>build the OS image</li>
-</ol>
-<pre><code>./rbuild
-</code></pre>
-<h1 id="docker-method-not-working" tabindex="-1">Docker Method (Not Working) <a class="header-anchor" href="#docker-method-not-working">#</a></h1>
+<h1 id="docker-experiment-not-working" tabindex="-1">Docker EXPERIMENT (Not Working) <a class="header-anchor" href="#docker-experiment-not-working">#</a></h1>
 <p>This method does not work, yet, but it's included here in case it can be made to work at some stage.</p>
 <ol>
 <li>
 <p>Create Docker Volume</p>
-<pre><code>docker volume create rock-4se-rbuild
-</code></pre>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">docker</span> volume create rock-4se-rbuild</code></pre>
 </li>
 <li>
 <p>Create a debos docker image, with some customisations</p>
@@ -531,19 +534,16 @@ Inside the docker container run:</li>
 </li>
 <li>
 <p>Open a bash shell using the image and volume</p>
-<pre><code>docker run --rm -it -v &quot;$(pwd)&quot;:/root/host --mount source=rock-4se-rbuild,target=/home/builduser/rock-4se-rbuild --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --security-opt label=disable --entrypoint=/bin/bash rbuild:6
-</code></pre>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">docker</span> run <span class="token parameter variable">--rm</span> <span class="token parameter variable">-it</span> <span class="token parameter variable">-v</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>"</span>:/root/host <span class="token parameter variable">--mount</span> <span class="token assign-left variable">source</span><span class="token operator">=</span>rock-4se-rbuild,target<span class="token operator">=</span>/home/builduser/rock-4se-rbuild <span class="token parameter variable">--tmpfs</span> /dev/shm:rw,nosuid,nodev,exec,size<span class="token operator">=</span>4g --security-opt <span class="token assign-left variable">label</span><span class="token operator">=</span>disable <span class="token parameter variable">--entrypoint</span><span class="token operator">=</span>/bin/bash rbuild:6</code></pre>
 </li>
 <li>
 <p>Clone the rbuild source</p>
 <p>Inside the docker container run:</p>
-<pre><code>git clone https://github.com/radxa-repo/rbuild ./
-</code></pre>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">git</span> clone https://github.com/radxa-repo/rbuild ./</code></pre>
 </li>
 <li>
 <p>Build the OS image</p>
-<pre><code>./rbuild
-</code></pre>
+<pre class="language-bash" tabindex="0"><code class="language-bash">./rbuild</code></pre>
 </li>
 </ol>
 <hr>

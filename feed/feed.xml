@@ -637,11 +637,15 @@ append earlyprintk console=ttyFIQ0,1500000n8 rw init=/sbin/init rootfstype=ext4 
 		<link href="https://aogriffiths.github.io/do/blog/2023_04_rock_4/rock4se_build_3_rbuild/x86_build/"/>
 		<updated>2023-04-23T00:00:00Z</updated>
 		<id>https://aogriffiths.github.io/do/blog/2023_04_rock_4/rock4se_build_3_rbuild/x86_build/</id>
-		<content type="html">&lt;p&gt;The build of the system image is done using
-&lt;a href=&quot;https://github.com/radxa-build/rock-4se/blob/main/.github/workflows/build.yml&quot;&gt;radxa-build/rock-4se&lt;/a&gt; and
-&lt;a href=&quot;https://github.com/radxa-repo/rbuild&quot;&gt;radxa-repo/rbuild&lt;/a&gt; using docker.&lt;/p&gt;
-&lt;p&gt;WORK IN PROGRESS. THESE INSTRUCTIONS ARE INCOMPLETE AND NOT WORKING.&lt;/p&gt;
-&lt;h1 id=&quot;vagrant-method&quot; tabindex=&quot;-1&quot;&gt;Vagrant Method &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/2023_04_rock_4/rock4se_build_3_rbuild/x86_build/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+		<content type="html">&lt;h3 id=&quot;work-in-progress-these-instructions-are-incomplete-and-not-working&quot; tabindex=&quot;-1&quot;&gt;WORK IN PROGRESS. THESE INSTRUCTIONS ARE INCOMPLETE AND NOT WORKING. &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/2023_04_rock_4/rock4se_build_3_rbuild/x86_build/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The build of the system image is done using&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/radxa-build/rock-4se/blob/main/.github/workflows/build.yml&quot;&gt;radxa-build/rock-4se&lt;/a&gt; and&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/radxa-repo/rbuild&quot;&gt;radxa-repo/rbuild&lt;/a&gt; using docker.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The official build process uses github workflows, e.g. &lt;a href=&quot;https://github.com/radxa-build/rock-4se/blob/main/.github/workflows/build.yml&quot;&gt;radxa-build/rock-4se&lt;/a&gt; uses actions from &lt;a href=&quot;https://github.com/radxa-repo/rbuild&quot;&gt;radxa-repo/rbuild&lt;/a&gt;. So it should be possible to clone both repositories, customise them and use GitHub to build a custom image.&lt;/p&gt;
+&lt;p&gt;However, this page is hopefully going to document how you can build on your local machine.&lt;/p&gt;
+&lt;h1 id=&quot;vagrant-experiment&quot; tabindex=&quot;-1&quot;&gt;Vagrant EXPERIMENT &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/2023_04_rock_4/rock4se_build_3_rbuild/x86_build/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Install vagrant&lt;/p&gt;
@@ -659,33 +663,32 @@ append earlyprintk console=ttyFIQ0,1500000n8 rw init=/sbin/init rootfstype=ext4 
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Create a debos docker image, with some customisations&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
 &lt;p&gt;This will allow you to get a bash shell with a builduser later on.&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; build &lt;span class=&quot;token parameter variable&quot;&gt;-t&lt;/span&gt; rbuild:6 &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&quot;3&quot;&gt;
-&lt;li&gt;Open a bash shell using the image and volume&lt;/li&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;docker run --rm -it -v &amp;quot;$(pwd)&amp;quot;:/root/host --mount source=rock-4se-rbuild,target=/home/builduser/rock-4se-rbuild --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --security-opt label=disable --entrypoint=/bin/bash rbuild:6
+&lt;pre&gt;&lt;code&gt;
+3. Open a bash shell using the image and volume
+   ```bash
+   docker run --rm -it -v &amp;quot;$(pwd)&amp;quot;:/root/host --mount source=rock-4se-rbuild,target=/home/builduser/rock-4se-rbuild --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --security-opt label=disable --entrypoint=/bin/bash rbuild:6
 &lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&quot;4&quot;&gt;
-&lt;li&gt;Clone the rbuild source
-Inside the docker container run:&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Clone the rbuild source
+Inside the docker container run:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; clone https://github.com/radxa-repo/rbuild ./&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;build the OS image&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;./rbuild&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/radxa-repo/rbuild ./
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&quot;5&quot;&gt;
-&lt;li&gt;build the OS image&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;./rbuild
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&quot;docker-method-not-working&quot; tabindex=&quot;-1&quot;&gt;Docker Method (Not Working) &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/2023_04_rock_4/rock4se_build_3_rbuild/x86_build/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;docker-experiment-not-working&quot; tabindex=&quot;-1&quot;&gt;Docker EXPERIMENT (Not Working) &lt;a class=&quot;header-anchor&quot; href=&quot;https://aogriffiths.github.io/do/blog/2023_04_rock_4/rock4se_build_3_rbuild/x86_build/&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;This method does not work, yet, but it&#39;s included here in case it can be made to work at some stage.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Create Docker Volume&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;docker volume create rock-4se-rbuild
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; volume create rock-4se-rbuild&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Create a debos docker image, with some customisations&lt;/p&gt;
@@ -694,19 +697,16 @@ Inside the docker container run:&lt;/li&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Open a bash shell using the image and volume&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;docker run --rm -it -v &amp;quot;$(pwd)&amp;quot;:/root/host --mount source=rock-4se-rbuild,target=/home/builduser/rock-4se-rbuild --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --security-opt label=disable --entrypoint=/bin/bash rbuild:6
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&quot;&lt;/span&gt;:/root/host &lt;span class=&quot;token parameter variable&quot;&gt;--mount&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;rock-4se-rbuild,target&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/home/builduser/rock-4se-rbuild &lt;span class=&quot;token parameter variable&quot;&gt;--tmpfs&lt;/span&gt; /dev/shm:rw,nosuid,nodev,exec,size&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;4g --security-opt &lt;span class=&quot;token assign-left variable&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;disable &lt;span class=&quot;token parameter variable&quot;&gt;--entrypoint&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/bin/bash rbuild:6&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Clone the rbuild source&lt;/p&gt;
 &lt;p&gt;Inside the docker container run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/radxa-repo/rbuild ./
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; clone https://github.com/radxa-repo/rbuild ./&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Build the OS image&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;./rbuild
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;./rbuild&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
