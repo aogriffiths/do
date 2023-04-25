@@ -31,14 +31,17 @@ Steps
 
    A docker container will be used for building the board SD card image. You can create a docker image from the Dockerfile contained in the rockchip-bsp, but first you need to edit it to make some changes (if you are building on a arm machine) and fixes:
 
-   * Open the docker file
-     ```bash
-     open ./docker/Dockerfile 
-     ```
+   **a)** Open the docker file
+   ```bash
+   open ./docker/Dockerfile 
+   ```
 
-   * Comment out all lines that contain `RUN echo "deb http://mirrors.tuna...`
+   **b)** Comment out all lines that contain 
+   ```dockerfile
+   RUN echo "deb http://mirrors.tuna...
+   ```
 
-   * add `u-boot-tools` (The kernel build later is dependent on mkimage from u-boot-tools, but unfortunately the Dockerfile provided doesn't include it.
+   **c)** Add `u-boot-tools` (The kernel build later is dependent on mkimage from u-boot-tools, but unfortunately the Dockerfile provided doesn't include it.
 
    You can then build and tag the image with
 
