@@ -234,7 +234,7 @@ Steps
 
 
 References
-----------
+==========
 
 * https://wiki.radxa.com/Rock3/dev/Debian
 * https://wiki.radxa.com/Rockpi4/dev/Debian

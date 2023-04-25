@@ -103,12 +103,7 @@ This method does not work, yet, but it's included here in case it can be made to
 
 
 
------
-
-
-1. `brew install ansible`
-
-
-referecnes:
+References
+----------
 
 https://radxa-repo.github.io/bsp/
