@@ -5,16 +5,19 @@ date: 2023-04-23
 tags: rock
 ---
 
+### WORK IN PROGRESS. THESE INSTRUCTIONS ARE INCOMPLETE AND NOT WORKING.
 
 The build of the system image is done using 
-[radxa-build/rock-4se](https://github.com/radxa-build/rock-4se/blob/main/.github/workflows/build.yml) and
-[radxa-repo/rbuild](https://github.com/radxa-repo/rbuild) using docker.
+* [radxa-build/rock-4se](https://github.com/radxa-build/rock-4se/blob/main/.github/workflows/build.yml) and
+* [radxa-repo/rbuild](https://github.com/radxa-repo/rbuild) using docker.
+
+The official build process uses github workflows, e.g. [radxa-build/rock-4se](https://github.com/radxa-build/rock-4se/blob/main/.github/workflows/build.yml) uses actions from [radxa-repo/rbuild](https://github.com/radxa-repo/rbuild). So it should be possible to clone both repositories, customise them and use GitHub to build a custom image.
+
+However, this page is hopefully going to document how you can build on your local machine.
 
 
-WORK IN PROGRESS. THESE INSTRUCTIONS ARE INCOMPLETE AND NOT WORKING.
-
-Vagrant Method 
-==============
+Vagrant EXPERIMENT 
+==================
 
 
 1. Install vagrant
@@ -32,47 +35,42 @@ Vagrant Method
    * ```vagrant plugin install vagrant-vmware-desktop```
 
 
-
-   
-   
-
 2. Create a debos docker image, with some customisations
 
-This will allow you to get a bash shell with a builduser later on.
+   This will allow you to get a bash shell with a builduser later on.
 
 
-```bash
-docker build -t rbuild:6 .
+   ```bash
+   docker build -t rbuild:6 .
 ```
 
 3. Open a bash shell using the image and volume
-```
-docker run --rm -it -v "$(pwd)":/root/host --mount source=rock-4se-rbuild,target=/home/builduser/rock-4se-rbuild --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --security-opt label=disable --entrypoint=/bin/bash rbuild:6
+   ```bash
+   docker run --rm -it -v "$(pwd)":/root/host --mount source=rock-4se-rbuild,target=/home/builduser/rock-4se-rbuild --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --security-opt label=disable --entrypoint=/bin/bash rbuild:6
 ```
 
 4. Clone the rbuild source
-Inside the docker container run:
-```
-git clone https://github.com/radxa-repo/rbuild ./
-```
+   Inside the docker container run:
+   ```bash
+   git clone https://github.com/radxa-repo/rbuild ./
+   ```
 
 5. build the OS image
-```
-./rbuild
-```
+   ```bash
+   ./rbuild
+   ```
 
 
 
-Docker Method (Not Working)
-===========================
+Docker EXPERIMENT (Not Working)
+===============================
 
 This method does not work, yet, but it's included here in case it can be made to work at some stage. 
 
 
-
 1. Create Docker Volume
 
-   ```
+   ```bash
    docker volume create rock-4se-rbuild
    ```
 
@@ -86,20 +84,20 @@ This method does not work, yet, but it's included here in case it can be made to
 
 3. Open a bash shell using the image and volume
 
-   ```
+   ```bash
    docker run --rm -it -v "$(pwd)":/root/host --mount source=rock-4se-rbuild,target=/home/builduser/rock-4se-rbuild --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --security-opt label=disable --entrypoint=/bin/bash rbuild:6
    ```
    
 4. Clone the rbuild source
 
    Inside the docker container run:
-   ```
+   ```bash
    git clone https://github.com/radxa-repo/rbuild ./
    ```
 
 5. Build the OS image
  
-   ```
+   ```bash
    ./rbuild
    ```
 
