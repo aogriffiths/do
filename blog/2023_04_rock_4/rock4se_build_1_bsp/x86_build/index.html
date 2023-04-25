@@ -497,18 +497,11 @@ h2 + .header-anchor {
 <li>
 <p><strong>Create a Docker container</strong></p>
 <p>A docker container will be used for building the board SD card image. You can create a docker image from the Dockerfile contained in the rockchip-bsp, but first you need to edit it to make some changes (if you are building on a arm machine) and fixes:</p>
-<ul>
-<li>
-<p>Open the docker file</p>
+<p><strong>a)</strong> Open the docker file</p>
 <pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">open</span> ./docker/Dockerfile </code></pre>
-</li>
-<li>
-<p>Comment out all lines that contain <code>RUN echo &quot;deb http://mirrors.tuna...</code></p>
-</li>
-<li>
-<p>add <code>u-boot-tools</code> (The kernel build later is dependent on mkimage from u-boot-tools, but unfortunately the Dockerfile provided doesn't include it.</p>
-</li>
-</ul>
+<p><strong>b)</strong> Comment out all lines that contain</p>
+<pre class="language-dockerfile" tabindex="0"><code class="language-dockerfile"><span class="token instruction"><span class="token keyword">RUN</span> echo "deb http://mirrors.tuna...</span></code></pre>
+<p><strong>c)</strong> Add <code>u-boot-tools</code> (The kernel build later is dependent on mkimage from u-boot-tools, but unfortunately the Dockerfile provided doesn't include it.</p>
 <p>You can then build and tag the image with</p>
 <pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">docker</span> build <span class="token parameter variable">-t</span> rockchip-radxa:1 <span class="token parameter variable">-f</span> ./docker/Dockerfile <span class="token builtin class-name">.</span>  <br><span class="token function">docker</span> tag rockchip-radxa:1 rockchip-radxa:latest</code></pre>
 <p>If you're using a Mac with Apple silicon you'll need to emulate x86/amd64 (there are x86 dependencies in many places in the build process, kind of crazy given it's cross compiling back to arm but anyway...)</p>
