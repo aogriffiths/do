@@ -8,8 +8,15 @@ function nbconvert(filename, format){
     if (! format){
         format = 'html'
     }
-    const cmd = ['nbconvert','--to',format,'--stdout',filename]
-    debug(`spawning jupyter with:`,cmd)
+    const cmd = ['nbconvert','--to',format,'--stdout',filename] // not using the '--execute' flag
+    debug(`spawning jupyter with:`,cmd,
+        {
+            env: {
+                ...process.env,
+                NBCONVERT: true
+            }
+        })
+
     const nbconvert = spawn(jupyter, cmd);
     return new Promise((resolveFunc) => {
         var result = ''
