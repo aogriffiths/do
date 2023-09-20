@@ -460,7 +460,7 @@ sudo dpkg -i homeassistant-supervised.deb
 		<link href="https://aogriffiths.github.io/do/blog/2023_04_rowing_assistant/01_introdution/"/>
 		<updated>2023-04-25T00:00:00Z</updated>
 		<id>https://aogriffiths.github.io/do/blog/2023_04_rowing_assistant/01_introdution/</id>
-		<content type="html">&lt;p&gt;Home Assistant is a fantastic way to bring all your smart devices together in to one smart home. With very little effort you get a slick UI, companion app, remote access (courtesy of Nubu Casa), user configurable automations and much more. But it’s not limited to your home.&lt;/p&gt;
+		<content type="html">&lt;p&gt;Home Assistant is a fantastic way to bring all your smart devices together in to one smart home. It gives you a slick UI, companion app, remote access (courtesy of Nubu Casa), user configurable automations and much more. But it’s not limited to your home.&lt;/p&gt;
 &lt;p&gt;This series of posts will show you how to do a few things beyond the basics, like:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Bespoke Sensors - using esphome&lt;/li&gt;
@@ -477,8 +477,7 @@ sudo dpkg -i homeassistant-supervised.deb
 &lt;p&gt;The example its based on is monitoring weather conditions for a rowing club, however you could easily adapt it for many other other outdoor or indoor, sport or non-sport examples.&lt;/p&gt;
 &lt;p&gt;I hope it’s useful!&lt;/p&gt;
 &lt;p&gt;Part 1 - Home Assistant on a Rock PI&lt;/p&gt;
-&lt;p&gt;Home assistant supports Raspberry PI as standard so why use anything else?&lt;/p&gt;
-&lt;p&gt;just your home that can help with&lt;/p&gt;
+&lt;p&gt;Home assistant supports Raspberry PI as standard so why use anything else? Raspberry PI is a great choiuce, but you may find a Rock PI option that is easier to get holder of, cheaper or more powerful.&lt;/p&gt;
 &lt;p&gt;Requirements&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Measure air temperature.&lt;/li&gt;
