@@ -6,7 +6,7 @@ tags: rowing assistant
 ---
 
 
-Home Assistant is a fantastic way to bring all your smart devices together in to one smart home. With very little effort you get a slick UI, companion app, remote access (courtesy of Nubu Casa), user configurable automations and much more. But it’s not limited to your home.
+Home Assistant is a fantastic way to bring all your smart devices together in to one smart home. It gives you a slick UI, companion app, remote access (courtesy of Nubu Casa), user configurable automations and much more. But it’s not limited to your home.
 
 This series of posts will show you how to do a few things beyond the basics, like:
 
@@ -31,9 +31,7 @@ I hope it’s useful!
 
 Part 1 - Home Assistant on a Rock PI 
 
-Home assistant supports Raspberry PI as standard so why use anything else?  
-
- just your home that can help with 
+Home assistant supports Raspberry PI as standard so why use anything else? Raspberry PI is a great choiuce, but you may find a Rock PI option that is easier to get holder of, cheaper or more powerful.
 
 
 
